@@ -34,6 +34,7 @@ class _HomePageViewState extends State<HomePageView> {
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: SliverAppBar(
+                leading: null,
                 floating: true,
                 snap: true,
                 expandedHeight: 200.0,
@@ -43,10 +44,6 @@ class _HomePageViewState extends State<HomePageView> {
           ];
         }, body: Builder(builder: (BuildContext context) {
           return CustomScrollView(
-            // The "controller" and "primary" members should be left unset, so that
-            // the NestedScrollView can control this inner scroll view.
-            // If the "controller" property is set, then this scroll view will not
-            // be associated with the NestedScrollView.
             slivers: <Widget>[
               SliverOverlapInjector(
                   handle:
