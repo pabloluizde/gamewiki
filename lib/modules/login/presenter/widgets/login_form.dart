@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/components/default_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
+import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {
@@ -60,7 +62,9 @@ class LoginForm extends StatelessWidget {
                 fontColor: Colors.white,
                 width: size.width * 0.40,
                 height: size.height * 0.05,
-                onTap: () {}),
+                onTap: () {
+                  Modular.to.pushNamed(AppRoutes.homePage);
+                }),
           ),
         ],
       ),
