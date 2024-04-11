@@ -33,7 +33,7 @@ migrate_working_dir/
 
 # Symbolication related
 app.*.symbols
-/lib/core/dio/
+/lib/core/dio/dio_base.dart
 
 # Obfuscation related
 app.*.map.json
