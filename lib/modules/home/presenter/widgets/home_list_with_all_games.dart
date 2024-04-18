@@ -26,7 +26,7 @@ class _HomeListState extends State<HomeList> {
     widget.cubit.scrollController.addListener(() {
       if (widget.cubit.scrollController.position.pixels ==
           widget.cubit.scrollController.position.maxScrollExtent) {
-        widget.cubit.homeRequest();
+        widget.cubit.getGameList();
       }
     });
     super.initState();

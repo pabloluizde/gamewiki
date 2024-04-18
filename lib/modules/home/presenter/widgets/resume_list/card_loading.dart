@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/text_container.dart';
+import 'package:game_wiki_app/modules/home/presenter/widgets/text_container.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeCardLoading extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeCardLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
         baseColor: const Color.fromARGB(255, 31, 0, 63),
-        highlightColor: const Color.fromARGB(255, 255, 255, 255),
+        highlightColor: Color.fromARGB(139, 219, 219, 219),
         enabled: true,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

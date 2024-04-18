@@ -8,13 +8,11 @@ class HomeOthersGamesCard extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
-    required this.description,
     required this.size,
   });
 
   final String image;
   final String title;
-  final String description;
   final Size size;
 
   @override
@@ -61,14 +59,14 @@ class HomeOthersGamesCard extends StatelessWidget {
                           bottomRight: Radius.circular(10),
                         ),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fitWidth,
                           image: NetworkImage(
                             image,
                           ),
                         ),
                       )),
                 ),
-                HomeTextCard(title: title, description: description),
+                HomeTextCard(title: title, description: ''),
               ],
             ),
           ),
