@@ -33,7 +33,7 @@ class AppModule extends Module {
   void routes(r) {
     r.child(AppRoutes.splash, child: (context) => const SplashPageView());
 
-    r.child(AppRoutes.homePage, child: (context) => const HomePageView());
+    r.child(AppRoutes.homePage, child: (context) => HomePageView());
     r.child(AppRoutes.login,
         child: (context) => const LoginPageView(),
         transition: TransitionType.downToUp,

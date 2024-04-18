@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/home_text_card.dart';
@@ -9,11 +8,13 @@ class HomeCardGames extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
+    required this.description,
     required this.size,
   });
 
   final String image;
   final String title;
+  final String description;
   final Size size;
 
   @override
@@ -70,7 +71,10 @@ class HomeCardGames extends StatelessWidget {
                             ),
                           )),
                     ),
-                    HomeTextCard(title: title),
+                    HomeTextCard(
+                      title: title,
+                      description: description,
+                    ),
                   ],
                 ),
               ),

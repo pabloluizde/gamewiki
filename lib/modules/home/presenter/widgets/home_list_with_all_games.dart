@@ -39,7 +39,7 @@ class _HomeListState extends State<HomeList> {
         builder: (context, state) {
           return Column(
             children: [
-              Container(
+              SizedBox(
                 height: widget.size.height,
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -58,6 +58,7 @@ class _HomeListState extends State<HomeList> {
                         size: widget.size,
                         image: widget.cubit.listGames[index].backgroundImage,
                         title: widget.cubit.listGames[index].name,
+                        description: widget.cubit.listGames[index].slug,
                       );
                     } else {}
                   },

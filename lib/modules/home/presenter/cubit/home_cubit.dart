@@ -1,14 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:game_wiki_app/core/dio/dio_base.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
 import 'package:game_wiki_app/modules/home/domain/entities/list_game_data_entite.dart';
 import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/home/domain/usecases/home_usecase.dart';
-import 'package:game_wiki_app/modules/home/infra/models/list_game_data_model.dart';
 import 'package:game_wiki_app/modules/home/infra/models/result_list_game_model.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_state.dart';
 
@@ -19,6 +16,7 @@ class HomeCubit extends Cubit<HomeState> {
   ScrollController scrollController = ScrollController();
 
   List<ResultListGameEntite> listGames = <ResultListGameModel>[];
+  List<ResultListGameEntite> listBestRating = <ResultListGameModel>[];
   String msg = '';
   String page = '1';
 
@@ -31,22 +29,23 @@ class HomeCubit extends Cubit<HomeState> {
       var result = await usecase.getListOfGames(page);
       if (result != null || result != Failure) {
         if (result is ListGameDataEntite) {
+          emit(const HomeLoadingState());
           setList(result.result);
           setPage(result);
 
-          emit(HomeSuccessState());
+          emit(const HomeSuccessState());
         } else if (result is ErrorModelCore) {
           msg = result.message!;
-          emit(HomeErrorState());
+          emit(const HomeErrorState());
         } else {
-          emit(HomeErrorState());
+          emit(const HomeErrorState());
         }
       } else {
         emit(const HomeErrorState());
       }
     } else {
       msg = '';
-      emit(HomeErrorState());
+      emit(const HomeErrorState());
     }
   }
 
@@ -56,9 +55,9 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   setList(List<ResultListGameEntite> data) {
-    emit(HomeLoadingState());
+    emit(const HomeLoadingState());
     listGames.addAll(data);
 
-    emit(HomeSuccessState());
+    emit(const HomeSuccessState());
   }
 }

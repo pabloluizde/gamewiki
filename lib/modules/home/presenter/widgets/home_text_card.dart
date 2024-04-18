@@ -5,9 +5,11 @@ class HomeTextCard extends StatelessWidget {
   const HomeTextCard({
     super.key,
     required this.title,
+    required this.description,
   });
 
   final String title;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HomeTextCard extends StatelessWidget {
             Flexible(
               child: AutoSizeText(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -30,7 +32,7 @@ class HomeTextCard extends StatelessWidget {
               ),
             ),
             AutoSizeText(
-              'textCaps',
+              description,
               style: const TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 12,
