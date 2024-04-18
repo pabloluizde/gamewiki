@@ -4,7 +4,6 @@ import 'package:game_wiki_app/core/entites/store/store_result_entite.dart';
 import 'package:game_wiki_app/core/entites/store/stores_entite.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
-import 'package:game_wiki_app/core/models/stores/store_data_model.dart';
 import 'package:game_wiki_app/core/models/stores/store_result_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
 import 'package:game_wiki_app/modules/home/domain/entities/list_game_data_entite.dart';
@@ -21,8 +20,10 @@ class HomeCubit extends Cubit<HomeState> {
   List<StoreResultEntite> listStore = <StoreResultModel>[];
 
   ScrollController scrollController = ScrollController();
+  ScrollController scrollStoreController = ScrollController();
   String msg = '';
-  String page = '1';
+  String pageGame = '1';
+  String pageStore = '1';
 
   Future<void> getGameList() async {
     emit(const HomeLoadingState());
@@ -30,12 +31,12 @@ class HomeCubit extends Cubit<HomeState> {
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListOfGames(page);
+      var result = await usecase.getListOfGames(pageGame);
       if (result != null || result != Failure) {
         if (result is ListGameDataEntite) {
           emit(const HomeLoadingState());
           setList(result.result);
-          setPage(result);
+          setPageGame(result);
 
           emit(const HomeSuccessState());
         } else if (result is ErrorModelCore) {
@@ -59,12 +60,11 @@ class HomeCubit extends Cubit<HomeState> {
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListStores(page);
+      var result = await usecase.getListStores(pageStore);
       if (result != null || result != Failure) {
         if (result is StoreDataEntite) {
           emit(const HomeLoadingState());
           setListStore(result.result);
-          // setPage(result);
 
           emit(const HomeSuccessState());
         } else if (result is ErrorModelCore) {
@@ -82,9 +82,9 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  setPage(ListGameDataEntite data) {
+  setPageGame(ListGameDataEntite data) {
     var split = data.next.split('page=');
-    page = split[1].toString();
+    pageGame = split[1].toString();
   }
 
   setList(List<ResultListGameEntite> data) {

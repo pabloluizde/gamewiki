@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_state.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/others_list/others_games_loading.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_card_resume.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/others_list/home_others_games_card.dart';
 
 class HomeOthersGames extends StatelessWidget {
@@ -28,9 +27,9 @@ class HomeOthersGames extends StatelessWidget {
           }
           if (state is HomeSuccessState) {
             return ListView.builder(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: cubit.listStore.length,
               itemBuilder: (context, index) {
                 return Padding(

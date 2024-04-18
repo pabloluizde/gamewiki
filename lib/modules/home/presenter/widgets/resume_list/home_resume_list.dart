@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_card_resume.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_resume.dart';
 
 class HomeResumeList extends StatelessWidget {
   const HomeResumeList({
