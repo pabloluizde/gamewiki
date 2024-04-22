@@ -17,10 +17,29 @@ class LoginCubit extends Cubit<LoginState> {
     AppImages.battlefield,
     AppImages.zelda,
     AppImages.mario,
-    AppImages.zelda,
+    AppImages.gow,
     AppImages.battlefield,
     AppImages.mario,
   ];
+
+  Future<bool> login() async {
+    emit(const LoginLoadingState());
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      if (email.value.text == 'pabloluiz@gmail.com' &&
+          password.value.text == 'P@odeforma') {
+        emit(const LoginSuccessState());
+        Future.delayed(const Duration(seconds: 2))
+            .then((value) => emit(const LoginInitialState()));
+        return true;
+      } else {
+        emit(const LoginErrorState());
+        Future.delayed(const Duration(seconds: 2))
+            .then((value) => emit(const LoginInitialState()));
+        return false;
+      }
+    });
+    return false;
+  }
 
   carouselTimer() {
     Timer.periodic(const Duration(seconds: 4), (timer) {

@@ -1,7 +1,5 @@
-import 'dart:ui';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/home_text_card.dart';
 
 class HomeOthersGamesCard extends StatelessWidget {
   const HomeOthersGamesCard({
@@ -17,61 +15,35 @@ class HomeOthersGamesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size.width * 0.6,
-      height: size.height * 0.3,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(
-            image,
-          ),
-        ),
-      ),
-      child: ClipRRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 10,
-            sigmaY: 10,
-          ),
-          child: Container(
-            width: size.width * 0.6,
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.35),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      height: 300,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.blackDefaultColor,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: NetworkImage(
-                            image,
-                          ),
-                        ),
-                      )),
-                ),
-                HomeTextCard(title: title, description: ''),
-              ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          width: size.width * 0.2,
+          height: size.height * 0.1,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                image,
+              ),
             ),
           ),
         ),
-      ),
+        Container(
+          width: 70,
+          child: AutoSizeText(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 11,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 }

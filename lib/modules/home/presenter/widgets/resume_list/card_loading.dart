@@ -62,7 +62,9 @@ class HomeCardLoading extends StatelessWidget {
                                     ),
                                   )),
                             ),
-                            const HomeTextCardLoading(),
+                            HomeTextCardLoading(
+                              size: size,
+                            ),
                           ],
                         ),
                       ),

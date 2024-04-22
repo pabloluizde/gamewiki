@@ -17,34 +17,36 @@ class HomeOthersGames extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-        bloc: cubit,
-        builder: (context, state) {
-          if (state is HomeLoadingState) {
-            return HomeOthersGamesLoading(
-              size: size,
-            );
-          }
-          if (state is HomeSuccessState) {
-            return ListView.builder(
-              padding: const EdgeInsets.all(0),
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: cubit.listStore.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child: HomeOthersGamesCard(
-                    size: size,
-                    image: cubit.listStore[index].imageBackGround,
-                    title: cubit.listStore[index].name,
-                  ),
-                );
-              },
-            );
-          }
-          return Container();
-        });
+    return Container(
+      height: size.height * 0.17,
+      child: BlocBuilder(
+          bloc: cubit,
+          builder: (context, state) {
+            if (state is HomeLoadingState) {
+              return HomeOthersGamesLoading(
+                size: size,
+              );
+            }
+            if (state is HomeSuccessState) {
+              return ListView.builder(
+                padding: const EdgeInsets.all(0),
+                scrollDirection: Axis.horizontal,
+                itemCount: cubit.listStore.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 10),
+                    child: HomeOthersGamesCard(
+                      size: size,
+                      image: cubit.listStore[index].imageBackGround,
+                      title: cubit.listStore[index].name,
+                    ),
+                  );
+                },
+              );
+            }
+            return Container();
+          }),
+    );
   }
 }

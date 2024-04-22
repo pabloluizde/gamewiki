@@ -22,6 +22,13 @@ class TextFieldDefault extends StatefulWidget {
 
 class _TextFieldDefaultState extends State<TextFieldDefault> {
   late bool hiden;
+
+  @override
+  void initState() {
+    hiden = widget.isPassword;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,6 +37,7 @@ class _TextFieldDefaultState extends State<TextFieldDefault> {
         controller: widget.controller,
         cursorColor: Colors.white,
         style: TextStyle(color: widget.textColor, fontSize: 10),
+        obscureText: hiden,
         decoration: InputDecoration(
           suffixIcon: widget.isPassword
               ? IconButton(

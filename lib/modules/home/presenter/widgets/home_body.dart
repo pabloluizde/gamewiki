@@ -28,15 +28,15 @@ class HomeBody extends StatelessWidget {
                 leading: Container(),
                 floating: true,
                 pinned: false,
-                expandedHeight: 180.0,
+                expandedHeight: 140.0,
                 forceElevated: innerBoxIsScrolled,
               ),
             ],
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HomeResume(cubit: cubit, size: size),
               HomeOthersGames(cubit: cubit, size: size),
+              HomeResume(cubit: cubit, size: size),
             ],
           ),
         ));

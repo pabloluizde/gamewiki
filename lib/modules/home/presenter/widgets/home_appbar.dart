@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
+import 'package:game_wiki_app/core/utils/app_images.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({
@@ -35,7 +36,7 @@ class AppBarHome extends StatelessWidget {
                         color: AppColors.blackDefaultColor),
                   ),
                   AutoSizeText(
-                    'UserNickname'.toUpperCase(),
+                    'LuizGameplay'.toUpperCase(),
                     strutStyle:
                         const StrutStyle(height: 2.5, forceStrutHeight: true),
                     style: TextStyle(
@@ -50,7 +51,15 @@ class AppBarHome extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: const BoxDecoration(
-                    color: Colors.black, shape: BoxShape.circle),
+                  color: Colors.black,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      AppImages.gow,
+                    ),
+                  ),
+                ),
               )
             ],
           ),
@@ -61,7 +70,7 @@ class AppBarHome extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 60,
+            height: 38,
             width: double.infinity,
             decoration: BoxDecoration(
                 color: AppColors.darkPurpleColor,

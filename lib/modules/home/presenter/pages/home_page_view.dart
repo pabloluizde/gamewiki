@@ -16,8 +16,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   @override
   void initState() {
-    cubit.getGameList();
-    cubit.getStores();
+    cubit.getHome();
     super.initState();
   }
 

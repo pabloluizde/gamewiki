@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomeTextCardLoading extends StatelessWidget {
+  final Size size;
   const HomeTextCardLoading({
     super.key,
+    required this.size,
   });
 
   @override
@@ -18,16 +20,20 @@ class HomeTextCardLoading extends StatelessWidget {
             const SizedBox(height: 10),
             Flexible(
                 child: Container(
-              width: 60,
-              height: 30,
-              color: const Color.fromARGB(255, 0, 0, 0),
+              width: size.width * 0.5,
+              height: size.height * 0.025,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  borderRadius: BorderRadius.circular(5)),
             )),
             const SizedBox(height: 10),
             Flexible(
               child: Container(
-                width: 60,
-                height: 30,
-                color: const Color.fromARGB(255, 0, 0, 0),
+                width: size.width * 0.2,
+                height: size.height * 0.025,
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    borderRadius: BorderRadius.circular(5)),
               ),
             )
           ],

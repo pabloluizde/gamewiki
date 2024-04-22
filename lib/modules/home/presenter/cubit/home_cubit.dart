@@ -25,6 +25,11 @@ class HomeCubit extends Cubit<HomeState> {
   String pageGame = '1';
   String pageStore = '1';
 
+  getHome() async {
+    await getGameList();
+    await getStores();
+  }
+
   Future<void> getGameList() async {
     emit(const HomeLoadingState());
     msg = '';
