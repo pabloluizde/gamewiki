@@ -70,8 +70,8 @@ class LoginForm extends StatelessWidget {
                         fontColor: Colors.white,
                         width: size.width * 0.40,
                         height: size.height * 0.05,
-                        onTap: () {
-                          cubit.login().then((value) {
+                        onTap: () async {
+                          await cubit.login().then((value) {
                             if (value) {
                               Modular.to.pushNamed(AppRoutes.homePage);
                             }
