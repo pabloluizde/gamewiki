@@ -10,6 +10,12 @@ import 'package:game_wiki_app/modules/home/infra/datasources/i_home_datasource.d
 import 'package:game_wiki_app/modules/home/infra/repositories/home_repositoy_impl.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/pages/home_page_view.dart';
+import 'package:game_wiki_app/modules/information/domain/repositories/i_information_repository.dart';
+import 'package:game_wiki_app/modules/information/domain/usecases/information_usecase.dart';
+import 'package:game_wiki_app/modules/information/external/dio_information_datasource_impl.dart';
+import 'package:game_wiki_app/modules/information/infra/datasources/i_information_datasource.dart';
+import 'package:game_wiki_app/modules/information/infra/repositories/infomation_repository_impl.dart';
+import 'package:game_wiki_app/modules/information/presenter/cubit/information_cubit.dart';
 import 'package:game_wiki_app/modules/information/presenter/page/information_page_view.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/pages/login_page_view.dart';
@@ -27,9 +33,13 @@ class AppModule extends Module {
     i.addSingleton<LoginCubit>(LoginCubit.new);
     i.addSingleton<HomeCubit>(HomeCubit.new);
     i.addSingleton<SignUpCubit>(SignUpCubit.new);
+    i.addSingleton<InformationCubit>(InformationCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);
+    i.add<InformationUsecase>(InformationUsecaseimpl.new);
+    i.add<IInformationRepository>(InformationRepositoryImpl.new);
+    i.add<IInformationDatasource>(DioInformationDatasourceImpl.new);
   }
 
   @override
