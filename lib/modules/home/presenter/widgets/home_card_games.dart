@@ -73,7 +73,7 @@ class HomeCardGames extends StatelessWidget {
                     ),
                     HomeTextCard(
                       title: title,
-                      description: description,
+                      description: 'description',
                     ),
                   ],
                 ),

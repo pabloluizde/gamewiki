@@ -26,6 +26,8 @@ class HomeCubit extends Cubit<HomeState> {
   String pageStore = '1';
 
   getHome() async {
+    listStore.clear();
+    listGames.clear();
     await getGameList();
     await getStores();
   }
@@ -36,7 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListOfGames(pageGame);
+      var result = await usecase.getListOfGames();
       if (result != null || result != Failure) {
         if (result is ListGameDataEntite) {
           emit(const HomeLoadingState());

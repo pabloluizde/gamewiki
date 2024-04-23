@@ -27,15 +27,16 @@ class LoginCubit extends Cubit<LoginState> {
 
     if (email.value.text == 'pabloluiz@gmail.com' &&
         password.value.text == 'P@odeforma') {
-      Future.delayed(Duration(seconds: 2))
+      await Future.delayed(Duration(seconds: 2))
           .then((value) => emit(LoginSuccessState()));
-      Future.delayed(Duration(seconds: 2))
+      await Future.delayed(Duration(seconds: 2))
           .then((value) => emit(LoginInitialState()));
       return true;
     } else {
-      Future.delayed(Duration(seconds: 2))
+      await Future.delayed(Duration(seconds: 2))
           .then((value) => emit(LoginErrorState()));
-      Future.delayed(Duration(seconds: 2))
+
+      await Future.delayed(Duration(seconds: 2))
           .then((value) => emit(LoginInitialState()));
       return false;
     }

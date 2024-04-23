@@ -12,12 +12,11 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Failure, ListGameDataEntite>> getListOfGames(
-      String page) async {
+  Future<Either<Failure, ListGameDataEntite>> getListOfGames() async {
     try {
       dynamic result;
       final ListGameDataEntite listGames;
-      result = await datasource.getListOfGames(page);
+      result = await datasource.getListOfGames();
       listGames = result;
       return right(listGames);
     } catch (e) {

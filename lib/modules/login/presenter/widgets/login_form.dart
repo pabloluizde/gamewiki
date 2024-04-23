@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/components/default_button.dart';
+import 'package:game_wiki_app/core/components/error_button.dart';
+import 'package:game_wiki_app/core/components/loading_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_routes.dart';
@@ -79,6 +81,17 @@ class LoginForm extends StatelessWidget {
                         }),
                   );
                 }
+                if (state is LoginSuccessState) {
+                  return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: StateButton(
+                        icon: Icons.check,
+                        radius: 30,
+                        color: Color.fromARGB(255, 33, 246, 100),
+                        width: size.width * 0.40,
+                        height: size.height * 0.05,
+                      ));
+                }
                 if (state is LoginLoadingState) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -93,44 +106,18 @@ class LoginForm extends StatelessWidget {
                 if (state is LoginErrorState) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: StateButton(
+                      icon: Icons.close,
+                      radius: 30,
+                      color: const Color.fromARGB(255, 251, 34, 34),
+                      width: size.width * 0.40,
+                      height: size.height * 0.05,
+                    ),
                   );
                 }
                 return Container();
               }),
         ],
-      ),
-    );
-  }
-}
-
-class ButtonLoading extends StatelessWidget {
-  final double width;
-  final double height;
-  final double radius;
-  final Color? color;
-  final Color? fontColor;
-  const ButtonLoading(
-      {super.key,
-      required this.width,
-      required this.height,
-      required this.radius,
-      this.color,
-      this.fontColor});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Center(
-        child: LoadingAnimationWidget.waveDots(
-          color: Colors.white,
-          size: 30,
-        ),
       ),
     );
   }

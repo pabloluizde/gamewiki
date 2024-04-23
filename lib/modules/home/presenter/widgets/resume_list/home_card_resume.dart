@@ -52,7 +52,6 @@ class HomeCardResumeGames extends StatelessWidget {
                   flex: 3,
                   child: Container(
                       clipBehavior: Clip.hardEdge,
-                      height: 300,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: AppColors.blackDefaultColor,

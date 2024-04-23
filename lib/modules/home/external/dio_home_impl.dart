@@ -11,11 +11,11 @@ class DioHomeDatasourceImpl implements IHomeDatasource {
   DioHomeDatasourceImpl(this.dioClient);
 
   @override
-  Future<ListGameDataModel> getListOfGames(String page) async {
+  Future<ListGameDataModel> getListOfGames() async {
     try {
       final response = await dioClient.request(
         url:
-            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}&page=${page}',
+            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}',
         method: DioMethod.GET,
       );
       final jsonResult = response.body;

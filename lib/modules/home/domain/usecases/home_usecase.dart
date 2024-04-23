@@ -1,7 +1,7 @@
 import 'package:game_wiki_app/modules/home/domain/repositories/home_repository.dart';
 
 abstract class HomeUsecase {
-  Future<dynamic> getListOfGames(String page);
+  Future<dynamic> getListOfGames();
   Future<dynamic> getListStores(String page);
 }
 
@@ -10,9 +10,9 @@ class HomeUsecaseimpl implements HomeUsecase {
   HomeUsecaseimpl(this.repository);
 
   @override
-  Future getListOfGames(String page) async {
+  Future getListOfGames() async {
     dynamic model;
-    var result = await repository.getListOfGames(page);
+    var result = await repository.getListOfGames();
     result.fold(
       (error) {
         var model = error;
