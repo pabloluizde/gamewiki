@@ -5,11 +5,11 @@ class HomeTextCard extends StatelessWidget {
   const HomeTextCard({
     super.key,
     required this.title,
-    required this.description,
+    required this.rating,
   });
 
   final String title;
-  final String description;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +31,25 @@ class HomeTextCard extends StatelessWidget {
                     color: Colors.white),
               ),
             ),
-            AutoSizeText(
-              description,
-              style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  rating >= 3
+                      ? Icons.star_rate_rounded
+                      : Icons.star_half_rounded,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                AutoSizeText(
+                  '${rating}',
+                  style: const TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
+                ),
+              ],
             ),
           ],
         ),

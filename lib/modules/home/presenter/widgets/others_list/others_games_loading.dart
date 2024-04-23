@@ -1,7 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/text_container.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeOthersGamesLoading extends StatelessWidget {

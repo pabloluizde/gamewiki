@@ -21,10 +21,11 @@ class HomeResumeList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10),
           child: HomeCardResumeGames(
+              model: cubit.listGames[index],
               size: size,
               image: cubit.listGames[index].backgroundImage,
               title: cubit.listGames[index].name,
-              description: cubit.listGames[index].released),
+              rating: cubit.listGames[index].rating),
         );
       },
     );

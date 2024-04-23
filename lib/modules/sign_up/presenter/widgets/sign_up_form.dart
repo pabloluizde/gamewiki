@@ -10,15 +10,17 @@ import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_state.dart';
+import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
+import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_states.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
+class SignUpForm extends StatelessWidget {
+  const SignUpForm({
     super.key,
     required this.cubit,
     required this.size,
   });
 
-  final LoginCubit cubit;
+  final SignUpCubit cubit;
   final Size size;
 
   @override
@@ -30,7 +32,7 @@ class LoginForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: AutoSizeText(
-              'Login'.toUpperCase(),
+              'SignUp'.toUpperCase(),
               strutStyle: const StrutStyle(height: 3, forceStrutHeight: true),
               style: const TextStyle(
                   fontFamily: 'Roboto',
@@ -45,6 +47,20 @@ class LoginForm extends StatelessWidget {
               TextFieldDefault(
                 labelColor: Colors.black,
                 textColor: Colors.black,
+                controller: cubit.name,
+                label: 'Name',
+              ),
+              const SizedBox(height: 20),
+              TextFieldDefault(
+                labelColor: Colors.black,
+                textColor: Colors.black,
+                controller: cubit.nickname,
+                label: 'Nickname',
+              ),
+              const SizedBox(height: 20),
+              TextFieldDefault(
+                labelColor: Colors.black,
+                textColor: Colors.black,
                 controller: cubit.email,
                 label: 'Email',
               ),
@@ -56,31 +72,33 @@ class LoginForm extends StatelessWidget {
                 isPassword: true,
                 label: 'Password',
               ),
+              const SizedBox(height: 20),
+              TextFieldDefault(
+                labelColor: Colors.black,
+                textColor: Colors.black,
+                controller: cubit.confirmPassword,
+                isPassword: true,
+                label: 'Confirm Password',
+              ),
             ],
           ),
           BlocBuilder(
               bloc: cubit,
               builder: (context, state) {
-                if (state is LoginInitialState) {
+                if (state is SignUpInitialState) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     child: DefaultButton(
                         radius: 30,
-                        text: 'Enter',
+                        text: 'Create',
                         color: AppColors.purpleNeonColor,
                         fontColor: Colors.white,
                         width: size.width * 0.40,
                         height: size.height * 0.05,
-                        onTap: () async {
-                          await cubit.login().then((value) {
-                            if (value) {
-                              Modular.to.pushNamed(AppRoutes.homePage);
-                            }
-                          });
-                        }),
+                        onTap: () async {}),
                   );
                 }
-                if (state is LoginSuccessState) {
+                if (state is SignUpSuccessState) {
                   return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: StateButton(
@@ -91,7 +109,7 @@ class LoginForm extends StatelessWidget {
                         height: size.height * 0.05,
                       ));
                 }
-                if (state is LoginLoadingState) {
+                if (state is SignUpLoadingState) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     child: ButtonLoading(
@@ -102,7 +120,7 @@ class LoginForm extends StatelessWidget {
                     ),
                   );
                 }
-                if (state is LoginErrorState) {
+                if (state is SignUpErrorState) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     child: StateButton(

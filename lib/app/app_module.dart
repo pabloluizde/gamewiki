@@ -10,8 +10,10 @@ import 'package:game_wiki_app/modules/home/infra/datasources/i_home_datasource.d
 import 'package:game_wiki_app/modules/home/infra/repositories/home_repositoy_impl.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/pages/home_page_view.dart';
+import 'package:game_wiki_app/modules/information/presenter/page/information_page_view.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/pages/login_page_view.dart';
+import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/cubit/splash_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/pages/splash_page_view.dart';
 
@@ -24,6 +26,7 @@ class AppModule extends Module {
     i.addSingleton<SplashCubit>(SplashCubit.new);
     i.addSingleton<LoginCubit>(LoginCubit.new);
     i.addSingleton<HomeCubit>(HomeCubit.new);
+    i.addSingleton<SignUpCubit>(SignUpCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);
@@ -38,5 +41,9 @@ class AppModule extends Module {
         child: (context) => const LoginPageView(),
         transition: TransitionType.downToUp,
         duration: const Duration(milliseconds: 400));
+    r.child(
+      AppRoutes.informationPage,
+      child: (context) => InformationPageView(tag: r.args.data),
+    );
   }
 }

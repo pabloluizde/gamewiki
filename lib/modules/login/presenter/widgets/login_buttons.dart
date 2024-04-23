@@ -38,7 +38,9 @@ class LoginButtons extends StatelessWidget {
             fontColor: Colors.white,
             width: size.width * 0.4,
             height: size.height * 0.05,
-            onTap: () {},
+            onTap: () {
+              AppModal.signUpSheet(context, cubit.signCubit, size);
+            },
           ),
         ],
       ),

@@ -2,11 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/utils/app_images.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_state.dart';
+import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginInitialState());
+
+  final signCubit = Modular.get<SignUpCubit>();
 
   final email = TextEditingController();
   final password = TextEditingController();
