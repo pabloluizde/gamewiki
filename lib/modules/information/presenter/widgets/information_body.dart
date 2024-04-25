@@ -1,12 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_cubit.dart';
-import 'package:game_wiki_app/modules/information/presenter/cubit/information_states.dart';
+import 'package:game_wiki_app/modules/information/presenter/widgets/information_expanded_appbar.dart';
+import 'package:game_wiki_app/modules/information/presenter/widgets/information_list.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/information_view_image.dart';
-import 'package:game_wiki_app/modules/information/presenter/widgets/informations_platforms.dart';
 
 class InformationBody extends StatelessWidget {
   const InformationBody({
@@ -22,53 +21,24 @@ class InformationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-              SliverAppBar(
-                backgroundColor: AppColors.blackDefaultColor,
-                flexibleSpace: InformationViewImage(model: tag),
-                leading: Container(),
-                floating: true,
-                pinned: false,
-                expandedHeight: size.height * 0.4,
-                forceElevated: innerBoxIsScrolled,
-              ),
-            ],
-        body: Material(
-          child: Container(
-            height: size.height,
+    return ProviderScope(
+      child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                ExpandingAppBar(
+                  title: tag.name,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    // Flexible is important for the children widgets added here.
+                    Flexible(
+                      child: InformationViewImage(model: tag),
+                    )
+                  ],
+                )
+              ],
+          body: Material(
             color: AppColors.blackDefaultColor,
-            child: BlocBuilder(
-                bloc: cubit,
-                builder: (context, state) {
-                  if (state is InformationSuccessState) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 10),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            InformationsPlatforms(cubit: cubit),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
-                              child: AutoSizeText(
-                                cubit.filterText(cubit.model.description),
-                                style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }
-                  return Container();
-                }),
-          ),
-        ));
+            child: InformationList(size: size, cubit: cubit),
+          )),
+    );
   }
 }
