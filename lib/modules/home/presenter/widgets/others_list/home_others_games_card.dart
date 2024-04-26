@@ -31,12 +31,12 @@ class HomeOthersGamesCard extends StatelessWidget {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           width: 70,
           child: AutoSizeText(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 11,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.bold,

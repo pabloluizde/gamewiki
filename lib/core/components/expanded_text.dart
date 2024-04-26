@@ -30,7 +30,7 @@ class ExpandableTextState extends State<ExpandableText> {
   Widget build(BuildContext context) {
     final colorClickableText = Colors.white.withOpacity(0.5);
     TextSpan link = TextSpan(
-        text: _readMore ? "view_more".tr : "show_less".tr,
+        text: _readMore ? " ... View more".tr : " Show less".tr,
         style: TextStyle(
           fontFamily: 'Roboto',
           fontSize: 13,
@@ -39,7 +39,7 @@ class ExpandableTextState extends State<ExpandableText> {
         ),
         recognizer: TapGestureRecognizer()..onTap = _onTapLink);
     Widget result = Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         right: 0.0,
         top: 10,
       ),
@@ -81,7 +81,7 @@ class ExpandableTextState extends State<ExpandableText> {
             textSpan = TextSpan(
               text:
                   _readMore ? widget.text.substring(0, endIndex) : widget.text,
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class ExpandableTextState extends State<ExpandableText> {
             textSpan = TextSpan(
               text: widget.text,
               recognizer: TapGestureRecognizer()..onTap = _onTapLink,
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 13,
                   fontWeight: FontWeight.bold,

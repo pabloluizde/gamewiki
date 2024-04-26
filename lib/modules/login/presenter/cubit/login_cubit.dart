@@ -27,21 +27,21 @@ class LoginCubit extends Cubit<LoginState> {
   ];
 
   Future<bool> login() async {
-    emit(LoginLoadingState());
+    emit(const LoginLoadingState());
 
     if (email.value.text == 'pabloluiz@gmail.com' &&
         password.value.text == 'P@odeforma') {
-      await Future.delayed(Duration(seconds: 2))
-          .then((value) => emit(LoginSuccessState()));
-      await Future.delayed(Duration(seconds: 2))
-          .then((value) => emit(LoginInitialState()));
+      await Future.delayed(const Duration(seconds: 2))
+          .then((value) => emit(const LoginSuccessState()));
+      await Future.delayed(const Duration(seconds: 2))
+          .then((value) => emit(const LoginInitialState()));
       return true;
     } else {
-      await Future.delayed(Duration(seconds: 2))
-          .then((value) => emit(LoginErrorState()));
+      await Future.delayed(const Duration(seconds: 2))
+          .then((value) => emit(const LoginErrorState()));
 
-      await Future.delayed(Duration(seconds: 2))
-          .then((value) => emit(LoginInitialState()));
+      await Future.delayed(const Duration(seconds: 2))
+          .then((value) => emit(const LoginInitialState()));
       return false;
     }
   }

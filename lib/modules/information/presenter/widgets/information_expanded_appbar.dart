@@ -27,7 +27,7 @@ class ExpandingAppBar extends ConsumerWidget {
           opacity: state.scrollFraction2,
           child: AutoSizeText(
             title,
-            style: TextStyle(
+            style: const TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -43,7 +43,6 @@ class ExpandingAppBar extends ConsumerWidget {
       ),
       flexibleSpace: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          // We update the state here.
           ref
               .read(roundedHeaderProvider.notifier)
               .updateHeight(constraints.maxHeight);

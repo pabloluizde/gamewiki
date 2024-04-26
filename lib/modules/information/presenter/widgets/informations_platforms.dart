@@ -28,7 +28,7 @@ class InformationsPlatforms extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: AutoSizeText(
                       e.platform.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 12,
                           fontWeight: FontWeight.bold,

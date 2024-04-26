@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/list_game_data_entite.dart';
 import 'package:game_wiki_app/modules/information/domain/usecases/information_usecase.dart';
 import 'package:game_wiki_app/modules/information/infra/models/game_details_model.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_states.dart';
@@ -17,8 +16,6 @@ class InformationCubit extends Cubit<InformationState> {
   ScrollController scrollController = ScrollController();
   ScrollController scrollStoreController = ScrollController();
   String msg = '';
-  String pageGame = '1';
-  String pageStore = '1';
 
   getDetails(int id) async {
     await getDetailsGame(id);

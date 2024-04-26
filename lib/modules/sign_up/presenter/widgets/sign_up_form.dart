@@ -1,15 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/components/default_button.dart';
 import 'package:game_wiki_app/core/components/error_button.dart';
 import 'package:game_wiki_app/core/components/loading_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/core/utils/app_routes.dart';
-import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
-import 'package:game_wiki_app/modules/login/presenter/cubit/login_state.dart';
 import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
 import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_states.dart';
 
