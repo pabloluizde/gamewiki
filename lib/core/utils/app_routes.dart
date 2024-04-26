@@ -4,4 +4,5 @@ class AppRoutes {
   static get login => '/login';
   static get splashToHome => '/splash_to_home';
   static get informationPage => '/information_page';
+  static get gameLibraryPage => '/game_library_page';
 }

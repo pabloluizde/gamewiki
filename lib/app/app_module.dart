@@ -3,6 +3,13 @@ import 'package:game_wiki_app/core/dio/dio_client.dart';
 import 'package:game_wiki_app/core/dio/get_dio_register.dart';
 import 'package:game_wiki_app/core/dio/i_dio_client.dart';
 import 'package:game_wiki_app/core/utils/app_routes.dart';
+import 'package:game_wiki_app/modules/game_library/domain/repositories/i_game_library_repository.dart';
+import 'package:game_wiki_app/modules/game_library/domain/usecases/game_library_usecase.dart';
+import 'package:game_wiki_app/modules/game_library/external/dio_game_library_impl.dart';
+import 'package:game_wiki_app/modules/game_library/infra/datasources/i_game_library_datasource.dart';
+import 'package:game_wiki_app/modules/game_library/infra/repositories/game_library_repository_impl.dart';
+import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_cubit.dart';
+import 'package:game_wiki_app/modules/game_library/presenter/pages/game_library_page_view.dart';
 import 'package:game_wiki_app/modules/home/domain/repositories/home_repository.dart';
 import 'package:game_wiki_app/modules/home/domain/usecases/home_usecase.dart';
 import 'package:game_wiki_app/modules/home/external/dio_home_impl.dart';
@@ -34,12 +41,16 @@ class AppModule extends Module {
     i.addSingleton<HomeCubit>(HomeCubit.new);
     i.addSingleton<SignUpCubit>(SignUpCubit.new);
     i.addSingleton<InformationCubit>(InformationCubit.new);
+    i.addSingleton<GameLibraryCubit>(GameLibraryCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);
     i.add<InformationUsecase>(InformationUsecaseimpl.new);
     i.add<IInformationRepository>(InformationRepositoryImpl.new);
     i.add<IInformationDatasource>(DioInformationDatasourceImpl.new);
+    i.add<GameLibraryUsecase>(GameLibraryUsecaseimpl.new);
+    i.add<IGameLibraryRepository>(GameLibraryRepositoryImpl.new);
+    i.add<IGameLibraryDatasource>(DioGameLibraryDatasourceImpl.new);
   }
 
   @override
@@ -55,5 +66,7 @@ class AppModule extends Module {
       AppRoutes.informationPage,
       child: (context) => InformationPageView(tag: r.args.data),
     );
+    r.child(AppRoutes.gameLibraryPage,
+        child: (context) => GameLibraryPageView());
   }
 }

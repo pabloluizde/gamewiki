@@ -30,56 +30,59 @@ class HomeCardResumeGames extends StatelessWidget {
       },
       child: Hero(
         tag: image,
-        child: Container(
-          width: size.width * 0.6,
-          height: size.height,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                image,
+        child: Material(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            width: size.width * 0.6,
+            height: size.height,
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                  image,
+                ),
               ),
             ),
-          ),
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 10,
-                sigmaY: 10,
-              ),
-              child: Container(
-                width: size.width * 0.6,
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.35),
-                  borderRadius: BorderRadius.circular(10),
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 10,
+                  sigmaY: 10,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex: 3,
-                      child: Container(
-                          clipBehavior: Clip.hardEdge,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: AppColors.blackDefaultColor,
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            ),
-                            image: DecorationImage(
-                              fit: BoxFit.fitHeight,
-                              image: NetworkImage(
-                                image,
+                child: Container(
+                  width: size.width * 0.6,
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.35),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 3,
+                        child: Container(
+                            clipBehavior: Clip.hardEdge,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: AppColors.blackDefaultColor,
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
                               ),
-                            ),
-                          )),
-                    ),
-                    HomeTextCard(title: title, rating: rating),
-                  ],
+                              image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: NetworkImage(
+                                  image,
+                                ),
+                              ),
+                            )),
+                      ),
+                      HomeTextCard(title: title, rating: rating),
+                    ],
+                  ),
                 ),
               ),
             ),
