@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:game_wiki_app/core/components/default_button.dart';
+import 'package:game_wiki_app/core/components/default_login_button.dart';
 import 'package:game_wiki_app/core/components/error_button.dart';
 import 'package:game_wiki_app/core/components/loading_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';
@@ -61,60 +61,24 @@ class LoginForm extends StatelessWidget {
           BlocBuilder(
               bloc: cubit,
               builder: (context, state) {
-                if (state is LoginInitialState) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: DefaultButton(
-                        radius: 30,
-                        text: 'Enter',
-                        color: AppColors.purpleNeonColor,
-                        fontColor: Colors.white,
-                        width: size.width * 0.40,
-                        height: size.height * 0.05,
-                        onTap: () async {
-                          await cubit.login().then((value) {
-                            if (value) {
-                              Modular.to.pushNamed(AppRoutes.homePage);
-                            }
-                          });
-                        }),
-                  );
-                }
-                if (state is LoginSuccessState) {
-                  return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: StateButton(
-                        icon: Icons.check,
-                        radius: 30,
-                        color: AppColors.greenSuccess,
-                        width: size.width * 0.40,
-                        height: size.height * 0.05,
-                      ));
-                }
-                if (state is LoginLoadingState) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: ButtonLoading(
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: DefaultLoginButton(
+                      state: state,
                       radius: 30,
+                      text: 'Enter',
                       color: AppColors.purpleNeonColor,
+                      fontColor: Colors.white,
                       width: size.width * 0.40,
                       height: size.height * 0.05,
-                    ),
-                  );
-                }
-                if (state is LoginErrorState) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: StateButton(
-                      icon: Icons.close,
-                      radius: 30,
-                      color: AppColors.redError,
-                      width: size.width * 0.40,
-                      height: size.height * 0.05,
-                    ),
-                  );
-                }
-                return Container();
+                      onTap: () async {
+                        await cubit.login().then((value) {
+                          if (value) {
+                            Modular.to.pushNamed(AppRoutes.homePage);
+                          }
+                        });
+                      }),
+                );
               }),
         ],
       ),

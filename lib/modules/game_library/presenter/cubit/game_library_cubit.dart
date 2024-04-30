@@ -5,12 +5,13 @@ import 'package:game_wiki_app/core/models/error_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
 import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_data_entite.dart';
 import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_list_result_entite.dart';
+import 'package:game_wiki_app/modules/game_library/domain/usecases/game_library_usecase.dart';
 import 'package:game_wiki_app/modules/game_library/infra/models/game_library_list_result_model.dart';
 import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_states.dart';
 import 'package:game_wiki_app/modules/home/domain/usecases/home_usecase.dart';
 
 class GameLibraryCubit extends Cubit<GameLibraryState> {
-  HomeUsecase usecase;
+  GameLibraryUsecase usecase;
   GameLibraryCubit(this.usecase) : super(const GameLibraryInitialState());
 
   List<GameLibraryListResultEntite> listGames = <GameLibraryListResultModel>[];
@@ -30,7 +31,7 @@ class GameLibraryCubit extends Cubit<GameLibraryState> {
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListOfGames();
+      var result = await usecase.getListOfGames(pageGame);
       if (result != null || result != Failure) {
         if (result is GameLibraryDataEntite) {
           emit(const GameLibraryLoadingState());

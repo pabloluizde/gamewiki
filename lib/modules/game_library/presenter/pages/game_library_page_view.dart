@@ -36,22 +36,11 @@ class _GameLibraryPageViewState extends State<GameLibraryPageView> {
                   crossAxisSpacing: 8.0, // spacing between columns
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return GridTile(
-                    header: GridTileBar(
-                      title: Text('$index',
-                          style: const TextStyle(color: Colors.black)),
-                    ),
-                    child: Container(
-                      margin: const EdgeInsets.all(12.0),
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        gradient: const RadialGradient(
-                          colors: <Color>[Color(0x0F88EEFF), Color(0x2F0099BB)],
-                        ),
-                      ),
-                    ),
+                  return Container(
+                    width: 200,
+                    height: 200,
+                    margin: const EdgeInsets.all(12.0),
+                    color: Colors.amber,
                   );
                 },
               );

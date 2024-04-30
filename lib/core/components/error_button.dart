@@ -18,18 +18,21 @@ class StateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(30),
+    return GestureDetector(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 1000),
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Center(
+            child: Icon(
+          icon,
+          color: Colors.white,
+        )),
       ),
-      child: Center(
-          child: Icon(
-        icon,
-        color: Colors.white,
-      )),
     );
   }
 }

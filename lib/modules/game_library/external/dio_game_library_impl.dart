@@ -14,7 +14,7 @@ class DioGameLibraryDatasourceImpl implements IGameLibraryDatasource {
     try {
       final response = await dioClient.request(
         url:
-            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}',
+            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}&page=${page}',
         method: DioMethod.GET,
       );
       final jsonResult = response.body;
