@@ -1,6 +1,6 @@
-import 'package:game_wiki_app/modules/home/domain/entities/list_game_data_entite.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
-import 'package:game_wiki_app/modules/home/infra/models/result_list_game_model.dart';
+import 'package:game_wiki_app/core/entites/games/list_game_data_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/models/result_list_game_model.dart';
 
 class ListGameDataModel extends ListGameDataEntite {
   int count;

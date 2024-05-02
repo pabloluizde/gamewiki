@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/information_text_rating.dart';
 
 class InformationViewImage extends StatelessWidget {

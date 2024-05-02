@@ -1,8 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_wiki_app/core/components/expanded_text.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_cubit.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_states.dart';
+import 'package:game_wiki_app/modules/information/presenter/widgets/information_screenshots.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/informations_platforms.dart';
 
 class InformationList extends StatelessWidget {
@@ -35,6 +38,10 @@ class InformationList extends StatelessWidget {
                         cubit.filterText(cubit.model.description),
                         trimLines: 5,
                       ),
+                      InformationScreenshots(
+                        cubit: cubit,
+                        size: size,
+                      )
                     ],
                   ),
                 ),

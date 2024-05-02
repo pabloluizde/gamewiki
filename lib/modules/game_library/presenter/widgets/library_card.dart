@@ -6,8 +6,8 @@ import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_text_card.dart';
 
-class HomeCardResumeGames extends StatelessWidget {
-  const HomeCardResumeGames({
+class LibraryCard extends StatelessWidget {
+  const LibraryCard({
     super.key,
     required this.image,
     required this.title,
@@ -16,11 +16,11 @@ class HomeCardResumeGames extends StatelessWidget {
     required this.model,
   });
 
-  final ResultListGameEntite model;
   final String image;
   final String title;
   final double rating;
   final Size size;
+  final ResultListGameEntite model;
 
   @override
   Widget build(BuildContext context) {

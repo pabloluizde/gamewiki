@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/components/star_rating.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 
 class InformationTextRating extends StatelessWidget {
   const InformationTextRating({

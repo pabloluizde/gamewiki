@@ -6,10 +6,10 @@ import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
 import 'package:game_wiki_app/core/models/stores/store_result_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/list_game_data_entite.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/entites/games/list_game_data_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/home/domain/usecases/home_usecase.dart';
-import 'package:game_wiki_app/modules/home/infra/models/result_list_game_model.dart';
+import 'package:game_wiki_app/core/models/result_list_game_model.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -41,7 +41,6 @@ class HomeCubit extends Cubit<HomeState> {
       var result = await usecase.getListOfGames();
       if (result != null || result != Failure) {
         if (result is ListGameDataEntite) {
-          emit(const HomeLoadingState());
           setList(result.result);
           setPageGame(result);
 
@@ -70,7 +69,6 @@ class HomeCubit extends Cubit<HomeState> {
       var result = await usecase.getListStores(pageStore);
       if (result != null || result != Failure) {
         if (result is StoreDataEntite) {
-          emit(const HomeLoadingState());
           setListStore(result.result);
 
           emit(const HomeSuccessState());
@@ -95,16 +93,10 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   setList(List<ResultListGameEntite> data) {
-    emit(const HomeLoadingState());
     listGames.addAll(data);
-
-    emit(const HomeSuccessState());
   }
 
   setListStore(List<StoreResultEntite> data) {
-    emit(const HomeLoadingState());
     listStore.addAll(data);
-
-    emit(const HomeSuccessState());
   }
 }

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 
 class ListGameDataEntite extends Equatable {
   final int count;

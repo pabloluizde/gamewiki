@@ -5,6 +5,7 @@ import 'package:game_wiki_app/core/models/error_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
 import 'package:game_wiki_app/modules/information/domain/usecases/information_usecase.dart';
 import 'package:game_wiki_app/modules/information/infra/models/game_details_model.dart';
+import 'package:game_wiki_app/modules/information/infra/models/screenshots_model/screenshots_games_data_model.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_states.dart';
 
 class InformationCubit extends Cubit<InformationState> {
@@ -12,13 +13,15 @@ class InformationCubit extends Cubit<InformationState> {
   InformationCubit(this.usecase) : super(const InformationInitialState());
 
   final model = GameDetailsModel.empty();
+  final modelScreenshots = ScreenshotsGamesDataModel.empty();
 
   ScrollController scrollController = ScrollController();
   ScrollController scrollStoreController = ScrollController();
   String msg = '';
 
-  getDetails(int id) async {
+  getDetails(int id, String name) async {
     await getDetailsGame(id);
+    await getScreenshots(name);
   }
 
   Future<void> getDetailsGame(int id) async {
@@ -30,8 +33,33 @@ class InformationCubit extends Cubit<InformationState> {
       var result = await usecase.getDetailsGame(id);
       if (result != null || result != Failure) {
         if (result is GameDetailsModel) {
-          emit(const InformationLoadingState());
           setResult(result);
+          emit(const InformationSuccessState());
+        } else if (result is ErrorModelCore) {
+          msg = result.message!;
+          emit(const InformationErrorState());
+        } else {
+          emit(const InformationErrorState());
+        }
+      } else {
+        emit(const InformationErrorState());
+      }
+    } else {
+      msg = '';
+      emit(const InformationErrorState());
+    }
+  }
+
+  Future<void> getScreenshots(String name) async {
+    emit(const InformationLoadingState());
+    msg = '';
+    bool connect = await verifyConexao();
+
+    if (connect) {
+      var result = await usecase.getScreenshots(name);
+      if (result != null || result != Failure) {
+        if (result is ScreenshotsGamesDataModel) {
+          setResultScreenShots(result);
           emit(const InformationSuccessState());
         } else if (result is ErrorModelCore) {
           msg = result.message!;
@@ -64,5 +92,9 @@ class InformationCubit extends Cubit<InformationState> {
     model.nameOriginal = data.nameOriginal;
     model.description = data.description;
     model.backgroundImage = data.backgroundImage;
+  }
+
+  setResultScreenShots(ScreenshotsGamesDataModel data) {
+    modelScreenshots.result = data.result;
   }
 }

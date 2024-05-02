@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_wiki_app/core/entites/games/list_game_data_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
+import 'package:game_wiki_app/core/models/list_game_data_model.dart';
+import 'package:game_wiki_app/core/models/result_list_game_model.dart';
 import 'package:game_wiki_app/core/utils/connection_validate.dart';
 import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_data_entite.dart';
 import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_list_result_entite.dart';
@@ -14,7 +18,7 @@ class GameLibraryCubit extends Cubit<GameLibraryState> {
   GameLibraryUsecase usecase;
   GameLibraryCubit(this.usecase) : super(const GameLibraryInitialState());
 
-  List<GameLibraryListResultEntite> listGames = <GameLibraryListResultModel>[];
+  List<ResultListGameEntite> listGames = <ResultListGameModel>[];
 
   ScrollController scrollController = ScrollController();
   String msg = '';
@@ -33,8 +37,7 @@ class GameLibraryCubit extends Cubit<GameLibraryState> {
     if (connect) {
       var result = await usecase.getListOfGames(pageGame);
       if (result != null || result != Failure) {
-        if (result is GameLibraryDataEntite) {
-          emit(const GameLibraryLoadingState());
+        if (result is ListGameDataModel) {
           setList(result.result);
           setPageGame(result);
 
@@ -54,12 +57,12 @@ class GameLibraryCubit extends Cubit<GameLibraryState> {
     }
   }
 
-  setPageGame(GameLibraryDataEntite data) {
+  setPageGame(ListGameDataEntite data) {
     var split = data.next.split('page=');
     pageGame = split[1].toString();
   }
 
-  setList(List<GameLibraryListResultEntite> data) {
+  setList(List<ResultListGameEntite> data) {
     emit(const GameLibraryLoadingState());
     listGames.addAll(data);
 

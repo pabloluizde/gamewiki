@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/home/domain/entities/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_cubit.dart';
 import 'package:game_wiki_app/modules/information/presenter/cubit/information_states.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/information_expanded_appbar.dart';

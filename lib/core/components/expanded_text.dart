@@ -28,14 +28,14 @@ class ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    final colorClickableText = Colors.white.withOpacity(0.5);
+    final colorClickableText = Color.fromARGB(255, 175, 175, 175);
     TextSpan link = TextSpan(
-        text: _readMore ? " ... View more".tr : " Show less".tr,
-        style: TextStyle(
+        text: _readMore ? " ... View more" : " Show less",
+        style: const TextStyle(
           fontFamily: 'Roboto',
           fontSize: 13,
           fontWeight: FontWeight.bold,
-          color: colorClickableText,
+          color: Colors.white,
         ),
         recognizer: TapGestureRecognizer()..onTap = _onTapLink);
     Widget result = Padding(
@@ -49,11 +49,11 @@ class ExpandableTextState extends State<ExpandableText> {
           final double maxWidth = constraints.maxWidth;
           final text = TextSpan(
             text: widget.text,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Roboto',
               fontSize: 13,
               fontWeight: FontWeight.bold,
-              color: colorClickableText,
+              color: Colors.white,
             ),
           );
           TextPainter textPainter = TextPainter(
@@ -81,11 +81,11 @@ class ExpandableTextState extends State<ExpandableText> {
             textSpan = TextSpan(
               text:
                   _readMore ? widget.text.substring(0, endIndex) : widget.text,
-              style: const TextStyle(
+              style: TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: colorClickableText),
               recognizer: TapGestureRecognizer()..onTap = _onTapLink,
               children: <TextSpan>[link],
             );
@@ -93,11 +93,11 @@ class ExpandableTextState extends State<ExpandableText> {
             textSpan = TextSpan(
               text: widget.text,
               recognizer: TapGestureRecognizer()..onTap = _onTapLink,
-              style: const TextStyle(
+              style: TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: colorClickableText),
             );
           }
           return RichText(
