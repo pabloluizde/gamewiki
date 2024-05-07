@@ -25,6 +25,14 @@ class HomeCubit extends Cubit<HomeState> {
   String pageGame = '1';
   String pageStore = '1';
 
+  int selectedIndex = 0;
+
+  setIndex(int index) {
+    emit(HomeLoadingState());
+    selectedIndex = index;
+    emit(HomeSuccessState());
+  }
+
   getHome() async {
     listStore.clear();
     listGames.clear();

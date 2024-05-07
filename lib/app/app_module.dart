@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:game_wiki_app/core/cubit/menu_cubit.dart';
 import 'package:game_wiki_app/core/dio/dio_client.dart';
 import 'package:game_wiki_app/core/dio/get_dio_register.dart';
 import 'package:game_wiki_app/core/dio/i_dio_client.dart';
@@ -42,6 +43,7 @@ class AppModule extends Module {
     i.addSingleton<SignUpCubit>(SignUpCubit.new);
     i.addSingleton<InformationCubit>(InformationCubit.new);
     i.addSingleton<GameLibraryCubit>(GameLibraryCubit.new);
+    i.addSingleton<MenuCubit>(MenuCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);

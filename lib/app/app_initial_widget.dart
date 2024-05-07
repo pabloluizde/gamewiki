@@ -9,7 +9,11 @@ class AppInitialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
       title: '',
-      theme: ThemeData(),
+      theme: ThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.transparent,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
