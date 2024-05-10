@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/home_body.dart';
+import 'package:game_wiki_app/modules/profile/presenter/page/profile_page_view.dart';
 
 class MenuList {
   final Size size;
@@ -8,8 +9,8 @@ class MenuList {
 
   List<Widget> get widgetOptions => <Widget>[
         HomeBody(size: size),
-        Text('data'),
-        HomeBody(size: size),
-        HomeBody(size: size),
+        Text('Like'),
+        Text('Search'),
+        ProfilePageView()
       ];
 }

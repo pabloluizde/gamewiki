@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/components/default_button.dart';
-import 'package:game_wiki_app/core/components/default_login_button.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_modals.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';

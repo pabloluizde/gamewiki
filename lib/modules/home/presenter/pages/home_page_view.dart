@@ -7,22 +7,11 @@ import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/home_menu_bottom_bar.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/menu_list.dart';
 
-class HomePageView extends StatefulWidget {
+class HomePageView extends StatelessWidget {
   HomePageView({super.key});
 
-  @override
-  State<HomePageView> createState() => _HomePageViewState();
-}
-
-class _HomePageViewState extends State<HomePageView> {
   final cubit = Modular.get<HomeCubit>();
   final cubitMenu = Modular.get<MenuCubit>();
-
-  @override
-  void initState() {
-    cubit.getHome();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

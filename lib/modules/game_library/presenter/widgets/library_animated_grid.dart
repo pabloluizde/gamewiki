@@ -24,7 +24,7 @@ class LibraryAnimatedGrid extends StatelessWidget {
         builder: (context, state) {
           return AnimationLimiter(
             child: Material(
-              color: AppColors.blackDefaultColor,
+              color: Colors.white,
               child: Container(
                 decoration: BoxDecoration(
                     color: AppColors.darkPurpleColor,
@@ -35,7 +35,9 @@ class LibraryAnimatedGrid extends StatelessWidget {
                   shrinkWrap: true,
                   crossAxisCount: 2,
                   children: List.generate(
-                    cubit.listGames.length,
+                    state is GameLibraryLoadingState
+                        ? 10
+                        : cubit.listGames.length,
                     (int index) {
                       if (state is GameLibraryLoadingState) {
                         return LibraryLoadingBody(

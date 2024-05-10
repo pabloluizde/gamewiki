@@ -3,16 +3,11 @@ import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/core/models/result_list_game_model.dart';
 
 class ListGameDataModel extends ListGameDataEntite {
-  int count;
-  String next;
-  String previous;
-  List<ResultListGameEntite> result;
-
   ListGameDataModel({
-    required this.count,
-    required this.next,
-    required this.previous,
-    required this.result,
+    required final int count,
+    required final String next,
+    required final String previous,
+    required final List<ResultListGameEntite> result,
   }) : super(
           count: count,
           next: next,

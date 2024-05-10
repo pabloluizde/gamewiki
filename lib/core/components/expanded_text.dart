@@ -2,12 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class ExpandableText extends StatefulWidget {
-  const ExpandableText(
+  ExpandableText(
     this.text, {
     this.fontSizes = 15,
     this.trimLines = 2,
     this.padding = 30,
-  })  : assert(text != null),
+  })  : assert(text.isNotEmpty),
         super();
 
   final String text;
@@ -27,7 +27,7 @@ class ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    final colorClickableText = Color.fromARGB(255, 175, 175, 175);
+    var colorClickableText = const Color.fromARGB(255, 175, 175, 175);
     TextSpan link = TextSpan(
         text: _readMore ? " ... View more" : " Show less",
         style: const TextStyle(

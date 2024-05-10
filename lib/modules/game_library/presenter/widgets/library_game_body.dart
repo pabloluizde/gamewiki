@@ -20,18 +20,22 @@ class LibraryGameBody extends StatelessWidget {
     return NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
               SliverAppBar(
-                flexibleSpace: AppBarLibrary(size: size),
+                flexibleSpace: AppBarLibrary(
+                  size: size,
+                  fontColor: innerBoxIsScrolled
+                      ? Colors.white
+                      : AppColors.darkPurpleColor,
+                ),
                 shape: const ContinuousRectangleBorder(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30))),
                 backgroundColor: innerBoxIsScrolled
                     ? AppColors.darkPurpleColor
-                    : AppColors.blackDefaultColor,
+                    : Colors.white,
                 leading: const InformationButtonBack(),
                 pinned: true,
                 primary: true,
-                forceElevated: true,
                 expandedHeight: 70.0,
               ),
             ],

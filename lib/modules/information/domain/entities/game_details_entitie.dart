@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:game_wiki_app/modules/information/domain/entities/game_details_data_platform.dart';
-import 'package:game_wiki_app/modules/information/domain/entities/game_details_plataform_entite.dart';
 
 class GameDetailsDataEntitie extends Equatable {
   final int id;
@@ -12,7 +11,7 @@ class GameDetailsDataEntitie extends Equatable {
   final bool tba;
   final String backgroundImage;
   final List<GameDetailsDataPlatformsEntite> platforms;
-  GameDetailsDataEntitie({
+  const GameDetailsDataEntitie({
     required this.id,
     required this.slug,
     required this.name,

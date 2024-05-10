@@ -5,9 +5,11 @@ class AppBarLibrary extends StatelessWidget {
   const AppBarLibrary({
     super.key,
     required this.size,
+    required this.fontColor,
   });
 
   final Size size;
+  final Color? fontColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,11 @@ class AppBarLibrary extends StatelessWidget {
                 'Library'.toUpperCase(),
                 strutStyle:
                     const StrutStyle(height: 2.5, forceStrutHeight: true),
-                style: const TextStyle(
+                style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: fontColor),
               ),
             ],
           ),

@@ -5,7 +5,7 @@ class GameDetailsPlataformsEntite extends Equatable {
   final String slug;
   final String name;
 
-  GameDetailsPlataformsEntite({
+  const GameDetailsPlataformsEntite({
     required this.id,
     required this.slug,
     required this.name,

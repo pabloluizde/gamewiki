@@ -14,7 +14,7 @@ class HomeMenuBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 40.0),
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(30)),
@@ -50,7 +50,7 @@ class HomeMenuBottomBar extends StatelessWidget {
                   iconColor: Color.fromARGB(255, 87, 87, 87),
                   iconActiveColor: Colors.white,
                   textColor: Colors.white,
-                  icon: Icons.logo_dev,
+                  icon: Icons.favorite,
                   text: 'Likes',
                 ),
                 ButtonSettings(
@@ -68,7 +68,7 @@ class HomeMenuBottomBar extends StatelessWidget {
                   iconColor: Color.fromARGB(255, 87, 87, 87),
                   iconActiveColor: Colors.white,
                   textColor: Colors.white,
-                  icon: Icons.abc,
+                  icon: Icons.person,
                   text: 'Profile',
                 ),
               ],

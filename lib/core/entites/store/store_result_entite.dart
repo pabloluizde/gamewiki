@@ -8,7 +8,7 @@ class StoreResultEntite extends Equatable {
   final int gamesCount;
   final String imageBackGround;
 
-  StoreResultEntite({
+  const StoreResultEntite({
     required this.id,
     required this.name,
     required this.domain,

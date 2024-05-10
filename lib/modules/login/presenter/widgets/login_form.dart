@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/components/default_login_button.dart';
-import 'package:game_wiki_app/core/components/error_button.dart';
-import 'package:game_wiki_app/core/components/loading_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
-import 'package:game_wiki_app/modules/login/presenter/cubit/login_state.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({

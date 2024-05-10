@@ -27,6 +27,7 @@ import 'package:game_wiki_app/modules/information/presenter/cubit/information_cu
 import 'package:game_wiki_app/modules/information/presenter/page/information_page_view.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/pages/login_page_view.dart';
+import 'package:game_wiki_app/modules/profile/presenter/page/profile_page_view.dart';
 import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/cubit/splash_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/pages/splash_page_view.dart';
@@ -70,5 +71,6 @@ class AppModule extends Module {
     );
     r.child(AppRoutes.gameLibraryPage,
         child: (context) => GameLibraryPageView());
+    r.child(AppRoutes.profilePage, child: (context) => ProfilePageView());
   }
 }

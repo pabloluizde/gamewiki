@@ -2,20 +2,13 @@ import 'dart:convert';
 import 'package:game_wiki_app/core/entites/store/store_result_entite.dart';
 
 class StoreResultModel extends StoreResultEntite {
-  int id;
-  String slug;
-  String name;
-  String domain;
-  int gamesCount;
-  String imageBackGround;
-
-  StoreResultModel({
-    required this.id,
-    required this.slug,
-    required this.name,
-    required this.domain,
-    required this.gamesCount,
-    required this.imageBackGround,
+  const StoreResultModel({
+    required int id,
+    required String slug,
+    required String name,
+    required String domain,
+    required int gamesCount,
+    required String imageBackGround,
   }) : super(
             id: id,
             slug: slug,

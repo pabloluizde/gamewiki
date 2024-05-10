@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:game_wiki_app/core/entites/games/list_game_data_entite.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
 import 'package:game_wiki_app/core/models/error_model.dart';
-import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_data_entite.dart';
 import 'package:game_wiki_app/modules/game_library/domain/repositories/i_game_library_repository.dart';
 import 'package:game_wiki_app/modules/game_library/infra/datasources/i_game_library_datasource.dart';
 

@@ -5,7 +5,7 @@ import 'package:game_wiki_app/modules/home/presenter/widgets/home_appbar.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/others_list/home_others_games.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_resume.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
   const HomeBody({
     super.key,
     required this.size,
@@ -14,12 +14,23 @@ class HomeBody extends StatelessWidget {
   final Size size;
 
   @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  final cubit = Modular.get<HomeCubit>();
+  @override
+  void initState() {
+    cubit.getHome();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final cubit = Modular.get<HomeCubit>();
     return NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
               SliverAppBar(
-                flexibleSpace: AppBarHome(size: size),
+                flexibleSpace: AppBarHome(size: widget.size),
                 shape: const ContinuousRectangleBorder(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -35,8 +46,8 @@ class HomeBody extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HomeOthersGames(cubit: cubit, size: size),
-              HomeResume(cubit: cubit, size: size),
+              HomeOthersGames(cubit: cubit, size: widget.size),
+              HomeResume(cubit: cubit, size: widget.size),
             ],
           ),
         ));

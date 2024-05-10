@@ -2,38 +2,22 @@ import 'dart:convert';
 import 'package:game_wiki_app/modules/game_library/domain/entities/game_library_list_result_entite.dart';
 
 class GameLibraryListResultModel extends GameLibraryListResultEntite {
-  int id;
-  String slug;
-  String name;
-  String released;
-  bool tba;
-  String backgroundImage;
-  double rating;
-  int ratingTop;
-  int ratingsCount;
-  int reviewsTextCount;
-  int added;
-  int metacritic;
-  int playtime;
-  int suggestionsCount;
-  String updated;
-
   GameLibraryListResultModel({
-    required this.id,
-    required this.slug,
-    required this.name,
-    required this.released,
-    required this.tba,
-    required this.backgroundImage,
-    required this.rating,
-    required this.ratingTop,
-    required this.ratingsCount,
-    required this.reviewsTextCount,
-    required this.added,
-    required this.metacritic,
-    required this.playtime,
-    required this.suggestionsCount,
-    required this.updated,
+    required int id,
+    required String slug,
+    required String name,
+    required String released,
+    required bool tba,
+    required String backgroundImage,
+    required double rating,
+    required int ratingTop,
+    required int ratingsCount,
+    required int reviewsTextCount,
+    required int added,
+    required int metacritic,
+    required int playtime,
+    required int suggestionsCount,
+    required String updated,
   }) : super(
           id: id,
           slug: slug,

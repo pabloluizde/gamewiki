@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_wiki_app/core/components/default_button.dart';
-import 'package:game_wiki_app/core/components/default_login_button.dart';
 import 'package:game_wiki_app/core/components/error_button.dart';
 import 'package:game_wiki_app/core/components/loading_button.dart';
 import 'package:game_wiki_app/core/components/text_field_default.dart';

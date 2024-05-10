@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
-import 'package:game_wiki_app/modules/information/presenter/widgets/information_expanded_appbar.dart';
+import 'package:game_wiki_app/core/components/expanded_appbar.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/loading/information_card_loading.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/loading/information_loading_description.dart';
 import 'package:game_wiki_app/modules/information/presenter/widgets/loading/information_loading_platforms.dart';
@@ -35,7 +35,7 @@ class InformationBodyLoading extends StatelessWidget {
                   InformationsLoadingDescription(
                     size: size,
                   ),
-                  Container(
+                  SizedBox(
                     height: size.height * 0.25,
                     child: Shimmer.fromColors(
                       baseColor: const Color.fromARGB(255, 170, 170, 170),

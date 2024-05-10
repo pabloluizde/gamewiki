@@ -4,7 +4,7 @@ import 'package:game_wiki_app/modules/information/domain/entities/game_details_p
 class GameDetailsDataPlatformsEntite extends Equatable {
   final GameDetailsPlataformsEntite platform;
 
-  GameDetailsDataPlatformsEntite({
+  const GameDetailsDataPlatformsEntite({
     required this.platform,
   });
   @override
