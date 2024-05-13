@@ -1,7 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:game_wiki_app/core/components/expanded_appbar.dart';
+import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/profile/presenter/widgets/profile_image.dart';
 
 class ProfilePageView extends StatelessWidget {
@@ -10,13 +10,13 @@ class ProfilePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.blackDefaultColor,
         body: ProviderScope(child: Builder(builder: (context) {
           return CustomScrollView(
             shrinkWrap: true,
             slivers: <Widget>[
               ExpandingAppBar(
-                title: 'saaaaassss',
+                title: 'LuizGameplay'.toUpperCase(),
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Flexible(

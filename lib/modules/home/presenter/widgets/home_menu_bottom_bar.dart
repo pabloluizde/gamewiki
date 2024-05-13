@@ -14,7 +14,7 @@ class HomeMenuBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(horizontal: 60.0),
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(30)),
@@ -50,15 +50,6 @@ class HomeMenuBottomBar extends StatelessWidget {
                   iconColor: Color.fromARGB(255, 87, 87, 87),
                   iconActiveColor: Colors.white,
                   textColor: Colors.white,
-                  icon: Icons.favorite,
-                  text: 'Likes',
-                ),
-                ButtonSettings(
-                  activeBorder: Border.all(color: Colors.white),
-                  backgroundColor: AppColors.darkPurpleColor,
-                  iconColor: Color.fromARGB(255, 87, 87, 87),
-                  iconActiveColor: Colors.white,
-                  textColor: Colors.white,
                   icon: Icons.search,
                   text: 'Search',
                 ),
@@ -68,8 +59,8 @@ class HomeMenuBottomBar extends StatelessWidget {
                   iconColor: Color.fromARGB(255, 87, 87, 87),
                   iconActiveColor: Colors.white,
                   textColor: Colors.white,
-                  icon: Icons.person,
-                  text: 'Profile',
+                  icon: Icons.favorite,
+                  text: 'Likes',
                 ),
               ],
               selectedIndex: cubitMenu.selectedIndex,

@@ -28,6 +28,13 @@ import 'package:game_wiki_app/modules/information/presenter/page/information_pag
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/pages/login_page_view.dart';
 import 'package:game_wiki_app/modules/profile/presenter/page/profile_page_view.dart';
+import 'package:game_wiki_app/modules/search/domain/repositories/search_repositories.dart';
+import 'package:game_wiki_app/modules/search/domain/usecases/search_usecases.dart';
+import 'package:game_wiki_app/modules/search/external/dio_search_impl.dart';
+import 'package:game_wiki_app/modules/search/infra/datasources/search_datasources.dart';
+import 'package:game_wiki_app/modules/search/infra/repositories/search_repository_impl.dart';
+import 'package:game_wiki_app/modules/search/presenter/cubit/search_cubit.dart';
+import 'package:game_wiki_app/modules/search/presenter/pages/search_page_view.dart';
 import 'package:game_wiki_app/modules/sign_up/presenter/cubit/sign_up_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/cubit/splash_cubit.dart';
 import 'package:game_wiki_app/modules/splash/presenter/pages/splash_page_view.dart';
@@ -45,6 +52,7 @@ class AppModule extends Module {
     i.addSingleton<InformationCubit>(InformationCubit.new);
     i.addSingleton<GameLibraryCubit>(GameLibraryCubit.new);
     i.addSingleton<MenuCubit>(MenuCubit.new);
+    i.addSingleton<SearchCubit>(SearchCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);
@@ -54,12 +62,14 @@ class AppModule extends Module {
     i.add<GameLibraryUsecase>(GameLibraryUsecaseimpl.new);
     i.add<IGameLibraryRepository>(GameLibraryRepositoryImpl.new);
     i.add<IGameLibraryDatasource>(DioGameLibraryDatasourceImpl.new);
+    i.add<SearchUsecase>(SearchUsecaseimpl.new);
+    i.add<ISearchRepository>(SearchRepositoryImpl.new);
+    i.add<ISearchDatasource>(DioSearchDatasourceImpl.new);
   }
 
   @override
   void routes(r) {
     r.child(AppRoutes.splash, child: (context) => const SplashPageView());
-
     r.child(AppRoutes.homePage, child: (context) => HomePageView());
     r.child(AppRoutes.login,
         child: (context) => const LoginPageView(),
@@ -72,5 +82,6 @@ class AppModule extends Module {
     r.child(AppRoutes.gameLibraryPage,
         child: (context) => GameLibraryPageView());
     r.child(AppRoutes.profilePage, child: (context) => ProfilePageView());
+    r.child(AppRoutes.searchPage, child: (context) => SearchPageView());
   }
 }

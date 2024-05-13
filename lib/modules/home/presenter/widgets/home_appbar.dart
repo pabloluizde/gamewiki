@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_images.dart';
+import 'package:game_wiki_app/core/utils/app_routes.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({
@@ -47,25 +49,27 @@ class AppBarHome extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      AppImages.gow,
+              GestureDetector(
+                onTap: () {
+                  Modular.to.pushNamed(AppRoutes.profilePage);
+                },
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        AppImages.gow,
+                      ),
                     ),
                   ),
                 ),
               )
             ],
           ),
-        ),
-        ListView(
-          children: [Container()],
         ),
         Align(
           alignment: Alignment.bottomCenter,

@@ -1,8 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
+import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/core/utils/app_images.dart';
-import 'package:game_wiki_app/modules/information/presenter/widgets/information_text_rating.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
@@ -12,7 +11,7 @@ class ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AppColors.blackDefaultColor,
       child: ClipRRect(
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(10),
@@ -20,7 +19,7 @@ class ProfileImage extends StatelessWidget {
           ),
           child: Container(
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
@@ -42,6 +41,14 @@ class ProfileImage extends StatelessWidget {
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
+                  ),
+                  AutoSizeText(
+                    '24 years'.toUpperCase(),
+                    style: const TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Color.fromARGB(255, 212, 212, 212)),
                   ),
                 ],
               ),

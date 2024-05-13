@@ -6,4 +6,5 @@ class AppRoutes {
   static get informationPage => '/information_page';
   static get gameLibraryPage => '/game_library_page';
   static get profilePage => '/profile_page';
+  static get searchPage => '/search_page';
 }
