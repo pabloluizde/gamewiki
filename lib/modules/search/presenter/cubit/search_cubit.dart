@@ -16,16 +16,24 @@ class SearchCubit extends Cubit<SearchState> {
   final searchController = TextEditingController();
   List<ResultListGameEntite> listGames = <ResultListGameModel>[];
   var msg = '';
+  String pageGame = '0';
 
-  Future<void> searchGames(String game) async {
+  clear() {
+    searchController.text = '';
+    listGames.clear();
+    pageGame = '0';
+  }
+
+  Future<void> searchGames(String game, int page) async {
     emit(const SearchLoadingState());
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListOfGames(game);
+      var result = await usecase.searchGames(game, page);
       if (result != null || result != Failure) {
         if (result is ListGameDataEntite) {
           setList(result.result);
+          setPageGame(result.next);
 
           emit(const SearchSuccessState());
         } else if (result is ErrorModelCore) {
@@ -45,5 +53,11 @@ class SearchCubit extends Cubit<SearchState> {
 
   setList(List<ResultListGameEntite> data) {
     listGames.addAll(data);
+  }
+
+  setPageGame(String data) {
+    var splitPage = data.split('page=');
+    var splitNumber = splitPage[1].split('&search=');
+    pageGame = splitNumber[0].toString();
   }
 }

@@ -29,9 +29,12 @@ class SearchAppBar extends StatelessWidget {
                     onChanged: (value) async {
                       cubit.listGames.clear();
                       if (cubit.searchController.text.length > 2) {
-                        await cubit.searchGames(value);
+                        cubit.pageGame = '1';
+                        await cubit.searchGames(
+                            value, int.parse(cubit.pageGame));
                       } else if (cubit.searchController.text.isEmpty) {
-                        await cubit.searchGames('');
+                        cubit.pageGame = '1';
+                        await cubit.searchGames('', 0);
                       }
                     },
                     labelOn: false,

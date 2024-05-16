@@ -6,8 +6,8 @@ import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/core/entites/games/result_list_game_entite.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_text_card.dart';
 
-class HomeCardResumeGames extends StatelessWidget {
-  const HomeCardResumeGames({
+class CardDefeault extends StatelessWidget {
+  const CardDefeault({
     super.key,
     required this.image,
     required this.title,

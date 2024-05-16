@@ -5,9 +5,9 @@ import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_cubit.dart';
 import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_states.dart';
 import 'package:game_wiki_app/modules/game_library/presenter/widgets/library_list.dart';
-import 'package:game_wiki_app/modules/game_library/presenter/widgets/loading/library_loading_body.dart';
+import 'package:game_wiki_app/core/components/loading_body.dart';
 
-class LibraryAnimatedGrid extends StatelessWidget {
+class LibraryAnimatedGrid extends StatefulWidget {
   const LibraryAnimatedGrid({
     super.key,
     required this.cubit,
@@ -18,9 +18,28 @@ class LibraryAnimatedGrid extends StatelessWidget {
   final Size size;
 
   @override
+  State<LibraryAnimatedGrid> createState() => _LibraryAnimatedGridState();
+}
+
+class _LibraryAnimatedGridState extends State<LibraryAnimatedGrid> {
+  final _scrollController = ScrollController();
+  @override
+  void initState() {
+    widget.cubit.listGames.clear();
+    widget.cubit.getGameList();
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        widget.cubit.getGameList();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder(
-        bloc: cubit,
+        bloc: widget.cubit,
         builder: (context, state) {
           return AnimationLimiter(
             child: Material(
@@ -30,25 +49,24 @@ class LibraryAnimatedGrid extends StatelessWidget {
                     color: AppColors.darkPurpleColor,
                     borderRadius: BorderRadius.circular(10)),
                 child: GridView.count(
+                  controller: _scrollController,
                   childAspectRatio: (16 / 19),
                   padding: const EdgeInsets.only(top: 30),
                   shrinkWrap: true,
                   crossAxisCount: 2,
                   children: List.generate(
-                    state is GameLibraryLoadingState
-                        ? 10
-                        : cubit.listGames.length,
+                    widget.cubit.listGames.length,
                     (int index) {
                       if (state is GameLibraryLoadingState) {
-                        return LibraryLoadingBody(
-                          size: size,
+                        return LoadingBody(
+                          size: widget.size,
                           index: index,
                         );
                       }
                       if (state is GameLibrarySuccessState) {
                         return LibraryList(
-                          cubit: cubit,
-                          size: size,
+                          cubit: widget.cubit,
+                          size: widget.size,
                           index: index,
                         );
                       }

@@ -11,11 +11,12 @@ class SearchRepositoryImpl implements ISearchRepository {
   SearchRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Failure, ListGameDataEntite>> searchGames(String game) async {
+  Future<Either<Failure, ListGameDataEntite>> searchGames(
+      String game, int page) async {
     try {
       dynamic result;
       final ListGameDataEntite listGames;
-      result = await datasource.searchGames(game);
+      result = await datasource.searchGames(game, page);
       listGames = result;
       return right(listGames);
     } catch (e) {

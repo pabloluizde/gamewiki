@@ -10,11 +10,11 @@ class DioSearchDatasourceImpl implements ISearchDatasource {
   DioSearchDatasourceImpl(this.dioClient);
 
   @override
-  Future<ListGameDataModel> searchGames(String game) async {
+  Future<ListGameDataModel> searchGames(String game, int page) async {
     try {
       final response = await dioClient.request(
         url:
-            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}&search=${game}',
+            '${DioResquestsBase.baseUrl}games?${DioResquestsBase.tokenRequest}${game != '' ? "&search=${game}&page=${page}" : '&page=${page}'}',
         method: DioMethod.GET,
       );
       final jsonResult = response.body;

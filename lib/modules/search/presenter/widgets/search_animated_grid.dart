@@ -3,17 +3,17 @@ import 'package:game_wiki_app/core/components/animation/animation_configuration.
 import 'package:game_wiki_app/core/components/animation/fade_animation.dart';
 import 'package:game_wiki_app/core/components/animation/scale_animation.dart';
 import 'package:game_wiki_app/core/components/card_defeault.dart';
-import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_cubit.dart';
+import 'package:game_wiki_app/modules/search/presenter/cubit/search_cubit.dart';
 
-class LibraryList extends StatelessWidget {
-  const LibraryList({
+class SearchAnimatedGrid extends StatelessWidget {
+  const SearchAnimatedGrid({
     super.key,
     required this.cubit,
     required this.size,
     required this.index,
   });
 
-  final GameLibraryCubit cubit;
+  final SearchCubit cubit;
   final Size size;
   final int index;
 

@@ -1,7 +1,7 @@
 import 'package:game_wiki_app/modules/search/domain/repositories/search_repositories.dart';
 
 abstract class SearchUsecase {
-  Future<dynamic> getListOfGames(String game);
+  Future<dynamic> searchGames(String game, int page);
 }
 
 class SearchUsecaseimpl implements SearchUsecase {
@@ -9,9 +9,9 @@ class SearchUsecaseimpl implements SearchUsecase {
   SearchUsecaseimpl(this.repository);
 
   @override
-  Future getListOfGames(String game) async {
+  Future searchGames(String game, int page) async {
     dynamic model;
-    var result = await repository.searchGames(game);
+    var result = await repository.searchGames(game, page);
     result.fold(
       (error) {
         var model = error;

@@ -4,8 +4,8 @@ import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/text_container.dart';
 import 'package:shimmer/shimmer.dart';
 
-class HomeCardLoading extends StatelessWidget {
-  const HomeCardLoading({
+class CardLoading extends StatelessWidget {
+  const CardLoading({
     super.key,
     required this.size,
   });

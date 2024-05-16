@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
-import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_card_resume.dart';
+import 'package:game_wiki_app/core/components/card_defeault.dart';
 
 class HomeResumeList extends StatelessWidget {
   const HomeResumeList({
@@ -20,7 +20,7 @@ class HomeResumeList extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10),
-          child: HomeCardResumeGames(
+          child: CardDefeault(
               model: cubit.listGames[index],
               size: size,
               image: cubit.listGames[index].backgroundImage,
