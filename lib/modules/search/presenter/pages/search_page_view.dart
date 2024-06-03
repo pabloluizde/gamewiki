@@ -17,6 +17,7 @@ class _SearchPageViewState extends State<SearchPageView> {
   @override
   void initState() {
     cubit.clear();
+    cubit.searchGames('', int.parse('1'));
     super.initState();
   }
 

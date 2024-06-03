@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:game_wiki_app/core/cubit/menu_cubit.dart';
+import 'package:game_wiki_app/core/cubit/menu_state.dart';
 import 'package:game_wiki_app/core/entites/store/store_result_entite.dart';
 import 'package:game_wiki_app/core/entites/store/stores_entite.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
@@ -16,6 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeUsecase usecase;
   HomeCubit(this.usecase) : super(const HomeInitialState());
 
+  final menuCubit = Modular.get<MenuCubit>();
+
   List<ResultListGameEntite> listGames = <ResultListGameModel>[];
   List<StoreResultEntite> listStore = <StoreResultModel>[];
 
@@ -25,19 +30,15 @@ class HomeCubit extends Cubit<HomeState> {
   String pageGame = '1';
   String pageStore = '1';
 
-  int selectedIndex = 0;
-
-  setIndex(int index) {
-    emit(HomeLoadingState());
-    selectedIndex = index;
-    emit(HomeSuccessState());
-  }
-
   getHome() async {
     listStore.clear();
     listGames.clear();
     await getGameList();
     await getStores();
+  }
+
+  void reset() {
+    emit(HomeInitialState());
   }
 
   Future<void> getGameList() async {

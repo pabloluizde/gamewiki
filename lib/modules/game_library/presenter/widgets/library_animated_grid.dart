@@ -23,15 +23,16 @@ class LibraryAnimatedGrid extends StatefulWidget {
 
 class _LibraryAnimatedGridState extends State<LibraryAnimatedGrid> {
   final _scrollController = ScrollController();
+
   @override
   void initState() {
     widget.cubit.listGames.clear();
-    widget.cubit.getGameList();
+    widget.cubit.getGameList('1');
     super.initState();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        widget.cubit.getGameList();
+        widget.cubit.getGameList(widget.cubit.pageGame);
       }
     });
   }
@@ -55,17 +56,19 @@ class _LibraryAnimatedGridState extends State<LibraryAnimatedGrid> {
                   shrinkWrap: true,
                   crossAxisCount: 2,
                   children: List.generate(
-                    widget.cubit.listGames.length,
+                    state is GameLibraryLoadingState
+                        ? widget.cubit.listGames.length + 10
+                        : widget.cubit.listGames.length,
                     (int index) {
-                      if (state is GameLibraryLoadingState) {
-                        return LoadingBody(
+                      if (index < widget.cubit.listGames.length) {
+                        return LibraryList(
+                          cubit: widget.cubit,
                           size: widget.size,
                           index: index,
                         );
                       }
-                      if (state is GameLibrarySuccessState) {
-                        return LibraryList(
-                          cubit: widget.cubit,
+                      if (state is GameLibraryLoadingState) {
+                        return LoadingBody(
                           size: widget.size,
                           index: index,
                         );

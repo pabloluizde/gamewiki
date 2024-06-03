@@ -16,12 +16,12 @@ class SearchCubit extends Cubit<SearchState> {
   final searchController = TextEditingController();
   List<ResultListGameEntite> listGames = <ResultListGameModel>[];
   var msg = '';
-  String pageGame = '0';
+  String pageGame = '1';
 
   clear() {
     searchController.text = '';
     listGames.clear();
-    pageGame = '0';
+    pageGame = '1';
   }
 
   Future<void> searchGames(String game, int page) async {

@@ -9,19 +9,20 @@ class HomeBody extends StatefulWidget {
   const HomeBody({
     super.key,
     required this.size,
+    required this.cubit,
   });
 
   final Size size;
+  final HomeCubit cubit;
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  final cubit = Modular.get<HomeCubit>();
   @override
   void initState() {
-    cubit.getHome();
+    widget.cubit.getHome();
     super.initState();
   }
 
@@ -46,8 +47,8 @@ class _HomeBodyState extends State<HomeBody> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HomeOthersGames(cubit: cubit, size: widget.size),
-              HomeResume(cubit: cubit, size: widget.size),
+              HomeOthersGames(cubit: widget.cubit, size: widget.size),
+              HomeResume(cubit: widget.cubit, size: widget.size),
             ],
           ),
         ));

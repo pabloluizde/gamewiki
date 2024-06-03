@@ -5,6 +5,10 @@ class MenuCubit extends Cubit<MenuState> {
   MenuCubit() : super(const MenuInitialState());
 
   int selectedIndex = 0;
+  void reset() {
+    selectedIndex = 0;
+    emit(MenuInitialState());
+  }
 
   setIndex(int index) {
     emit(MenuInitialState());

@@ -5,7 +5,7 @@ import 'package:game_wiki_app/modules/game_library/presenter/cubit/game_library_
 import 'package:game_wiki_app/modules/game_library/presenter/widgets/app_bar_library.dart';
 import 'package:game_wiki_app/modules/game_library/presenter/widgets/library_animated_grid.dart';
 
-class LibraryGameBody extends StatelessWidget {
+class LibraryGameBody extends StatefulWidget {
   const LibraryGameBody({
     super.key,
     required this.cubit,
@@ -16,12 +16,17 @@ class LibraryGameBody extends StatelessWidget {
   final Size size;
 
   @override
+  State<LibraryGameBody> createState() => _LibraryGameBodyState();
+}
+
+class _LibraryGameBodyState extends State<LibraryGameBody> {
+  @override
   Widget build(BuildContext context) {
     return NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
               SliverAppBar(
                 flexibleSpace: AppBarLibrary(
-                  size: size,
+                  size: widget.size,
                   fontColor: innerBoxIsScrolled
                       ? Colors.white
                       : AppColors.darkPurpleColor,
@@ -39,6 +44,6 @@ class LibraryGameBody extends StatelessWidget {
                 expandedHeight: 70.0,
               ),
             ],
-        body: LibraryAnimatedGrid(cubit: cubit, size: size));
+        body: LibraryAnimatedGrid(cubit: widget.cubit, size: widget.size));
   }
 }

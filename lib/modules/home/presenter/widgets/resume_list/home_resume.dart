@@ -1,8 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:game_wiki_app/core/utils/app_routes.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_state.dart';
 import 'package:game_wiki_app/core/components/card_loading.dart';
@@ -40,7 +38,7 @@ class HomeResume extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Modular.to.pushNamed(AppRoutes.gameLibraryPage);
+                    cubit.menuCubit.setIndex(1);
                   },
                   child: const AutoSizeText(
                     'See All',

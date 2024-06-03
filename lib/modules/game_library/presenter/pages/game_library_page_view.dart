@@ -15,7 +15,7 @@ class _GameLibraryPageViewState extends State<GameLibraryPageView> {
 
   @override
   void initState() {
-    cubit.getGameList();
+    cubit.getGameList('1');
     super.initState();
   }
 

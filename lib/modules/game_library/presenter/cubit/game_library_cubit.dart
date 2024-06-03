@@ -22,16 +22,21 @@ class GameLibraryCubit extends Cubit<GameLibraryState> {
 
   getHome() async {
     listGames.clear();
-    await getGameList();
+    await getGameList('1');
   }
 
-  Future<void> getGameList() async {
+  clear() {
+    listGames.clear();
+    pageGame = '1';
+  }
+
+  Future<void> getGameList(String page) async {
     emit(const GameLibraryLoadingState());
     msg = '';
     bool connect = await verifyConexao();
 
     if (connect) {
-      var result = await usecase.getListOfGames(pageGame);
+      var result = await usecase.getListOfGames(page);
       if (result != null || result != Failure) {
         if (result is ListGameDataModel) {
           setList(result.result);

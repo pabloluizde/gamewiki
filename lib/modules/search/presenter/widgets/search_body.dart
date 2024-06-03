@@ -24,7 +24,6 @@ class _SearchBodyState extends State<SearchBody> {
   final _scrollController = ScrollController();
   @override
   void initState() {
-    widget.cubit.searchGames('', int.parse('1'));
     super.initState();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -63,8 +62,6 @@ class _SearchBodyState extends State<SearchBody> {
                   padding: const EdgeInsets.all(0.0),
                   sliver: SliverGrid.count(
                     childAspectRatio: (16 / 19),
-                    // padding: const EdgeInsets.only(top: 30),
-                    // shrinkWrap: true,
                     crossAxisCount: 2,
                     children: List.generate(
                       state is SearchLoadingState

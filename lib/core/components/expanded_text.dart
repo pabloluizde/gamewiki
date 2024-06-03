@@ -30,9 +30,9 @@ class ExpandableTextState extends State<ExpandableText> {
     var colorClickableText = const Color.fromARGB(255, 175, 175, 175);
     TextSpan link = TextSpan(
         text: _readMore ? " ... View more" : " Show less",
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: 'Roboto',
-          fontSize: 13,
+          fontSize: widget.fontSizes,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
@@ -48,9 +48,9 @@ class ExpandableTextState extends State<ExpandableText> {
           final double maxWidth = constraints.maxWidth;
           final text = TextSpan(
             text: widget.text,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Roboto',
-              fontSize: 13,
+              fontSize: widget.fontSizes,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -82,7 +82,7 @@ class ExpandableTextState extends State<ExpandableText> {
                   _readMore ? widget.text.substring(0, endIndex) : widget.text,
               style: TextStyle(
                   fontFamily: 'Roboto',
-                  fontSize: 13,
+                  fontSize: widget.fontSizes,
                   fontWeight: FontWeight.bold,
                   color: colorClickableText),
               recognizer: TapGestureRecognizer()..onTap = _onTapLink,
@@ -94,7 +94,7 @@ class ExpandableTextState extends State<ExpandableText> {
               recognizer: TapGestureRecognizer()..onTap = _onTapLink,
               style: TextStyle(
                   fontFamily: 'Roboto',
-                  fontSize: 13,
+                  fontSize: widget.fontSizes,
                   fontWeight: FontWeight.bold,
                   color: colorClickableText),
             );

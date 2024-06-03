@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_wiki_app/core/components/menu_flutter.dart';
+import 'package:game_wiki_app/core/components/navbar/button_settings.dart';
+import 'package:game_wiki_app/core/components/navbar/menu_flutter.dart';
 import 'package:game_wiki_app/core/cubit/menu_cubit.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 
@@ -29,7 +30,7 @@ class HomeMenuBottomBar extends StatelessWidget {
               gap: 8,
               activeColor: Colors.black,
               iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               duration: Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Colors.black,
