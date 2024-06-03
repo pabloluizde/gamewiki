@@ -35,10 +35,8 @@ class _HomePageViewState extends State<HomePageView> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.darkPurpleColor,
-          body: Center(
-            child: _widgetOptions.widgetOptions.elementAt(
-              cubitMenu.selectedIndex,
-            ),
+          body: _widgetOptions.widgetOptions.elementAt(
+            cubitMenu.selectedIndex,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,

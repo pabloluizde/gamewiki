@@ -22,6 +22,7 @@ class HomeTextCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Flexible(
+              flex: 2,
               child: AutoSizeText(
                 title,
                 style: const TextStyle(

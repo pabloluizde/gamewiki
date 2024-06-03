@@ -61,7 +61,7 @@ class _SearchBodyState extends State<SearchBody> {
                 return SliverPadding(
                   padding: const EdgeInsets.all(0.0),
                   sliver: SliverGrid.count(
-                    childAspectRatio: (16 / 19),
+                    childAspectRatio: 18 / 26,
                     crossAxisCount: 2,
                     children: List.generate(
                       state is SearchLoadingState

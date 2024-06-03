@@ -28,29 +28,31 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-              SliverAppBar(
-                flexibleSpace: AppBarHome(size: widget.size),
-                shape: const ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))),
-                backgroundColor: Colors.white,
-                leading: Container(),
-                floating: true,
-                pinned: false,
-                expandedHeight: 140.0,
-                forceElevated: innerBoxIsScrolled,
+    return CustomScrollView(
+      shrinkWrap: true,
+      slivers: <Widget>[
+        SliverAppBar(
+          flexibleSpace: AppBarHome(size: widget.size),
+          shape: const ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+          backgroundColor: Colors.white,
+          leading: Container(),
+          floating: true,
+          pinned: false,
+          expandedHeight: 140.0,
+        ),
+        SliverPadding(
+            padding: const EdgeInsets.all(0.0),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  HomeOthersGames(cubit: widget.cubit, size: widget.size),
+                  HomeResume(cubit: widget.cubit, size: widget.size),
+                ],
               ),
-            ],
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              HomeOthersGames(cubit: widget.cubit, size: widget.size),
-              HomeResume(cubit: widget.cubit, size: widget.size),
-            ],
-          ),
-        ));
+            ))
+      ],
+    );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:game_wiki_app/core/components/animation/animation_configuration.dart';
 import 'package:game_wiki_app/core/components/animation/animation_limiter.dart';
@@ -9,7 +7,6 @@ import 'package:game_wiki_app/core/components/animation/fade_animation.dart';
 import 'package:game_wiki_app/core/components/animation/scale_animation.dart';
 import 'package:game_wiki_app/core/components/expanded_appbar.dart';
 import 'package:game_wiki_app/core/components/expanded_text.dart';
-import 'package:game_wiki_app/core/components/loading_body.dart';
 import 'package:game_wiki_app/core/themes/app_colors.dart';
 import 'package:game_wiki_app/modules/profile/presenter/widgets/profile_image.dart';
 
@@ -27,7 +24,7 @@ class ProfilePageView extends StatelessWidget {
               ExpandingAppBar(
                 title: 'LuizGameplay'.toUpperCase(),
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: const [
                   Flexible(
                     child: ProfileImage(),
                   ),
@@ -50,19 +47,19 @@ class ProfilePageView extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 15.0),
-                            child: Container(
+                            child: SizedBox(
                               height: 280,
                               child: Column(
                                 children: [
-                                  AutoSizeText(
+                                  const AutoSizeText(
                                     'Reviews',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontFamily: 'Roboto',
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white),
                                   ),
-                                  Divider(
+                                  const Divider(
                                     color: Colors.white,
                                   ),
                                   Expanded(
