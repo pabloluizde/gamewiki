@@ -17,60 +17,63 @@ class HomeResume extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: size.height * 0.38,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const AutoSizeText(
-                  'Games',
-                  style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    cubit.menuCubit.setIndex(1);
-                  },
-                  child: const AutoSizeText(
-                    'See All',
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 60.0),
+      child: SizedBox(
+        height: size.height * 0.38,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const AutoSizeText(
+                    'Games',
                     style: TextStyle(
                         fontFamily: 'Roboto',
-                        fontSize: 12,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                ),
-              ],
+                  GestureDetector(
+                    onTap: () {
+                      cubit.menuCubit.setIndex(1);
+                    },
+                    child: const AutoSizeText(
+                      'See All',
+                      style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: BlocBuilder(
-                bloc: cubit,
-                builder: (context, state) {
-                  if (state is HomeLoadingState) {
-                    return CardLoading(
-                      size: size,
-                    );
-                  }
-                  if (state is HomeSuccessState) {
-                    return HomeResumeList(
-                      cubit: cubit,
-                      size: size,
-                    );
-                  }
-                  return Container();
-                }),
-          ),
-        ],
+            Expanded(
+              child: BlocBuilder(
+                  bloc: cubit,
+                  builder: (context, state) {
+                    if (state is HomeLoadingState) {
+                      return CardLoading(
+                        size: size,
+                      );
+                    }
+                    if (state is HomeSuccessState) {
+                      return HomeResumeList(
+                        cubit: cubit,
+                        size: size,
+                      );
+                    }
+                    return Container();
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -15,10 +15,11 @@ class HomeMenuBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 60.0),
+      padding: const EdgeInsets.symmetric(horizontal: 110.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(30)),
+            color: AppColors.greyDefaultColor,
+            borderRadius: BorderRadius.circular(30)),
         height: 60,
         child: Align(
           alignment: Alignment.topCenter,
@@ -31,37 +32,29 @@ class HomeMenuBottomBar extends StatelessWidget {
               activeColor: Colors.black,
               iconSize: 24,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              duration: Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Colors.black,
               tabs: [
                 ButtonSettings(
                   activeBorder: Border.all(color: Colors.white),
-                  backgroundColor: AppColors.darkPurpleColor,
-                  iconColor: Color.fromARGB(255, 87, 87, 87),
-                  iconActiveColor: Colors.white,
-                  textColor: Colors.white,
-                  hoverColor: AppColors.darkPurpleColor,
+                  backgroundColor: Colors.white,
+                  iconColor: const Color.fromARGB(255, 87, 87, 87),
+                  iconActiveColor: AppColors.darkPurpleColor,
+                  textColor: AppColors.darkPurpleColor,
+                  hoverColor: Colors.white,
                   icon: Icons.home,
                   text: 'Home',
                 ),
                 ButtonSettings(
                   activeBorder: Border.all(color: Colors.white),
-                  backgroundColor: AppColors.darkPurpleColor,
-                  iconColor: Color.fromARGB(255, 87, 87, 87),
-                  iconActiveColor: Colors.white,
-                  textColor: Colors.white,
+                  backgroundColor: Colors.white,
+                  iconColor: const Color.fromARGB(255, 87, 87, 87),
+                  iconActiveColor: AppColors.darkPurpleColor,
+                  textColor: AppColors.darkPurpleColor,
+                  hoverColor: Colors.white,
                   icon: Icons.search,
                   text: 'Search',
-                ),
-                ButtonSettings(
-                  activeBorder: Border.all(color: Colors.white),
-                  backgroundColor: AppColors.darkPurpleColor,
-                  iconColor: Color.fromARGB(255, 87, 87, 87),
-                  iconActiveColor: Colors.white,
-                  textColor: Colors.white,
-                  icon: Icons.favorite,
-                  text: 'Likes',
                 ),
               ],
               selectedIndex: cubitMenu.selectedIndex,

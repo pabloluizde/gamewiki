@@ -25,7 +25,7 @@ class _SearchPageViewState extends State<SearchPageView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColors.darkPurpleColor,
+      backgroundColor: AppColors.blackDefaultColor,
       body: ProviderScope(
         child: Builder(
           builder: (context) {

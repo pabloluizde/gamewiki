@@ -15,7 +15,7 @@ class DioInformationDatasourceImpl implements IInformationDatasource {
     try {
       final response = await dioClient.request(
         url:
-            '${DioResquestsBase.baseUrl}games/${id}?${DioResquestsBase.tokenRequest}',
+            '${DioResquestsBase.baseUrl}games/$id?${DioResquestsBase.tokenRequest}',
         method: DioMethod.GET,
       );
       final jsonResult = response.body;
@@ -23,7 +23,7 @@ class DioInformationDatasourceImpl implements IInformationDatasource {
       return model;
     } on DioException catch (e) {
       var error = e.response!.data;
-      throw e;
+      throw error;
     }
   }
 
@@ -32,7 +32,7 @@ class DioInformationDatasourceImpl implements IInformationDatasource {
     try {
       final response = await dioClient.request(
         url:
-            '${DioResquestsBase.baseUrl}games/${name}/screenshots?${DioResquestsBase.tokenRequest}',
+            '${DioResquestsBase.baseUrl}games/$name/screenshots?${DioResquestsBase.tokenRequest}',
         method: DioMethod.GET,
       );
       final jsonResult = response.body;
@@ -41,7 +41,7 @@ class DioInformationDatasourceImpl implements IInformationDatasource {
       return model;
     } on DioException catch (e) {
       var error = e.response!.data;
-      throw e;
+      throw error;
     }
   }
 }

@@ -11,7 +11,7 @@ import 'package:game_wiki_app/modules/search/presenter/cubit/search_states.dart'
 
 class SearchCubit extends Cubit<SearchState> {
   SearchUsecase usecase;
-  SearchCubit(this.usecase) : super(SearchInitialState());
+  SearchCubit(this.usecase) : super(const SearchInitialState());
 
   final searchController = TextEditingController();
   List<ResultListGameEntite> listGames = <ResultListGameModel>[];

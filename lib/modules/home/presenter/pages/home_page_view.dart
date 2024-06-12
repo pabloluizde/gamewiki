@@ -8,7 +8,7 @@ import 'package:game_wiki_app/modules/home/presenter/widgets/home_menu_bottom_ba
 import 'package:game_wiki_app/modules/home/presenter/widgets/menu_list.dart';
 
 class HomePageView extends StatefulWidget {
-  HomePageView({super.key});
+  const HomePageView({super.key});
 
   @override
   State<HomePageView> createState() => _HomePageViewState();
@@ -34,12 +34,12 @@ class _HomePageViewState extends State<HomePageView> {
       bloc: cubitMenu,
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.darkPurpleColor,
+          backgroundColor: AppColors.blackDefaultColor,
           body: _widgetOptions.widgetOptions.elementAt(
             cubitMenu.selectedIndex,
           ),
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+              FloatingActionButtonLocation.centerDocked,
           floatingActionButton: HomeMenuBottomBar(
             cubitMenu: cubitMenu,
           ),

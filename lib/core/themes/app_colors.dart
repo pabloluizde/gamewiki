@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class AppColors {
   static String blackDefault = '#0D0D13';
   static String purpleNeon = '#9F00EA';
+  static String greyDefault = '#2D2D2D';
   static String darkBlue = '#131F35';
   static String darkPurple = '#310063';
 
   static Color blackDefaultColor = HexColor.fromHex(blackDefault);
+  static Color greyDefaultColor = HexColor.fromHex(greyDefault);
   static Color purpleNeonColor = HexColor.fromHex(purpleNeon);
   static Color darkBlueColor = HexColor.fromHex(darkBlue);
   static Color darkPurpleColor = HexColor.fromHex(darkPurple);

@@ -15,6 +15,5 @@ class MenuList {
           cubit: cubit,
         ),
         SearchPageView(),
-        Text('Like'),
       ];
 }

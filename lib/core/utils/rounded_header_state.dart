@@ -38,7 +38,7 @@ class RoundedHeaderNotifier extends StateNotifier<RoundedHeaderState> {
     if (state.currentHeight != newState.currentHeight) {
       // Setting state triggers an rebuild, the PostFrameCallback let Flutter
       // postpone the upcoming rebuild at a later time.
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         state = newState;
       });
     }

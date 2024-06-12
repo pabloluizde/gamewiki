@@ -23,7 +23,7 @@ class DioHomeDatasourceImpl implements IHomeDatasource {
       return model;
     } on DioException catch (e) {
       var error = e.response!.data;
-      throw e;
+      throw error;
     }
   }
 
@@ -40,7 +40,7 @@ class DioHomeDatasourceImpl implements IHomeDatasource {
       return model;
     } on DioException catch (e) {
       var error = e.response!.data;
-      throw e;
+      throw error;
     }
   }
 }

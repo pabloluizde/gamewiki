@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/modules/home/presenter/cubit/home_cubit.dart';
+import 'package:game_wiki_app/modules/home/presenter/widgets/carrousel/home_carousel.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/home_appbar.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/others_list/home_others_games.dart';
 import 'package:game_wiki_app/modules/home/presenter/widgets/resume_list/home_resume.dart';
@@ -23,6 +23,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     widget.cubit.getHome();
+
     super.initState();
   }
 
@@ -47,6 +48,7 @@ class _HomeBodyState extends State<HomeBody> {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
+                  HomeCarousel(cubit: widget.cubit, size: widget.size),
                   HomeOthersGames(cubit: widget.cubit, size: widget.size),
                   HomeResume(cubit: widget.cubit, size: widget.size),
                 ],

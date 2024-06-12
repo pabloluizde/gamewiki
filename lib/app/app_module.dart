@@ -20,6 +20,7 @@ import 'package:game_wiki_app/modules/information/presenter/cubit/information_cu
 import 'package:game_wiki_app/modules/information/presenter/page/information_page_view.dart';
 import 'package:game_wiki_app/modules/login/presenter/cubit/login_cubit.dart';
 import 'package:game_wiki_app/modules/login/presenter/pages/login_page_view.dart';
+import 'package:game_wiki_app/modules/profile/presenter/cubit/profile_cubit.dart';
 import 'package:game_wiki_app/modules/profile/presenter/page/profile_page_view.dart';
 import 'package:game_wiki_app/modules/search/domain/repositories/search_repositories.dart';
 import 'package:game_wiki_app/modules/search/domain/usecases/search_usecases.dart';
@@ -45,6 +46,7 @@ class AppModule extends Module {
     i.addSingleton<InformationCubit>(InformationCubit.new);
     i.addSingleton<MenuCubit>(MenuCubit.new);
     i.addSingleton<SearchCubit>(SearchCubit.new);
+    i.addSingleton<ProfileCubit>(ProfileCubit.new);
     i.add<HomeUsecase>(HomeUsecaseimpl.new);
     i.add<HomeRepository>(HomeRepositoryImpl.new);
     i.add<IHomeDatasource>(DioHomeDatasourceImpl.new);

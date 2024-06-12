@@ -15,69 +15,72 @@ class SearchAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: size.width * 0.75,
-                  child: TextFieldDefault(
-                    onChanged: (value) async {
-                      cubit.listGames.clear();
-                      if (cubit.searchController.text.length > 2) {
-                        cubit.pageGame = '1';
-                        await cubit.searchGames(
-                            value, int.parse(cubit.pageGame));
-                      } else if (cubit.searchController.text.isEmpty) {
-                        cubit.pageGame = '1';
-                        await cubit.searchGames('', 1);
-                      }
-                    },
-                    labelOn: false,
-                    cursorColor: AppColors.darkPurpleColor,
-                    radius: 15,
-                    hintColor: AppColors.darkPurpleColor.withOpacity(0.5),
-                    fontSize: 15,
-                    controller: cubit.searchController,
-                    hint: 'Search',
-                    textColor: Colors.black,
+    return Material(
+      color: AppColors.greyDefaultColor,
+      child: Stack(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: size.width * 0.75,
+                    child: TextFieldDefault(
+                      onChanged: (value) async {
+                        cubit.listGames.clear();
+                        if (cubit.searchController.text.length > 2) {
+                          cubit.pageGame = '1';
+                          await cubit.searchGames(
+                              value, int.parse(cubit.pageGame));
+                        } else if (cubit.searchController.text.isEmpty) {
+                          cubit.pageGame = '1';
+                          await cubit.searchGames('', 1);
+                        }
+                      },
+                      labelOn: false,
+                      cursorColor: Colors.white,
+                      radius: 15,
+                      hintColor: Colors.white,
+                      fontSize: 15,
+                      controller: cubit.searchController,
+                      hint: 'Search',
+                      textColor: Colors.white,
+                    ),
                   ),
-                ),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: AppColors.darkPurpleColor,
-                    borderRadius: BorderRadius.circular(10),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: AppColors.darkPurpleColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const RotatedBox(
+                        quarterTurns: 1,
+                        child: Icon(
+                          Icons.tune_outlined,
+                          color: Colors.white,
+                        )),
                   ),
-                  child: const RotatedBox(
-                      quarterTurns: 1,
-                      child: Icon(
-                        Icons.tune_outlined,
-                        color: Colors.white,
-                      )),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 38,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: AppColors.darkPurpleColor,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15))),
-          ),
-        )
-      ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 38,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: AppColors.blackDefaultColor,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15))),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

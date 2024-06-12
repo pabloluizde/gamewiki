@@ -28,7 +28,7 @@ class InformationScreenshots extends StatelessWidget {
                 color: Colors.white),
           ),
         ),
-        Container(
+        SizedBox(
           height: size.height * 0.25,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -40,11 +40,11 @@ class InformationScreenshots extends StatelessWidget {
                   ),
                   child: Container(
                     clipBehavior: Clip.hardEdge,
-                    child: Image.network(
-                        cubit.modelScreenshots.result[index].image),
                     height: size.height * 0.25,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Image.network(
+                        cubit.modelScreenshots.result[index].image),
                   ),
                 );
               }),

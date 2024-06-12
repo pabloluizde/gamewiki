@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:game_wiki_app/core/cubit/menu_cubit.dart';
-import 'package:game_wiki_app/core/cubit/menu_state.dart';
 import 'package:game_wiki_app/core/entites/store/store_result_entite.dart';
 import 'package:game_wiki_app/core/entites/store/stores_entite.dart';
 import 'package:game_wiki_app/core/errors/errors_core.dart';
@@ -26,6 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   ScrollController scrollController = ScrollController();
   ScrollController scrollStoreController = ScrollController();
+  PageController carrosselPageController = PageController();
   String msg = '';
   String pageGame = '1';
   String pageStore = '1';
@@ -94,6 +95,22 @@ class HomeCubit extends Cubit<HomeState> {
       msg = '';
       emit(const HomeErrorState());
     }
+  }
+
+  carouselTimer() {
+    Timer.periodic(const Duration(seconds: 4), (timer) {
+      if (carrosselPageController.positions.isNotEmpty) {
+        if (carrosselPageController.page == listGames.length - 1) {
+          carrosselPageController.animateToPage(0,
+              duration: const Duration(milliseconds: 350),
+              curve: Curves.linear);
+        } else {
+          carrosselPageController.nextPage(
+              duration: const Duration(milliseconds: 350),
+              curve: Curves.linear);
+        }
+      }
+    });
   }
 
   setPageGame(ListGameDataEntite data) {
